@@ -9,6 +9,12 @@ export const cases = [
   { slug: "contaflow", title: "Contaflow", kind: "Automação contábil", summary: "Uma frente de automação pensada para organizar rotinas, informações e atendimento de escritórios contábeis.", tags: ["Automação", "IA", "Operações"] },
 ] as const;
 
-export const founderBrands = ["Core Educação", "NextTrack", "Folha de S.Paulo", "Movida", "GIS", "digital.code", "Genpro", "RAM", "Fiat", "Jeep"];
+export const clientBrands = ["Core Educação", "NextTrack", "Folha de S.Paulo", "Movida", "GIS", "digital.code", "Genpro", "RAM", "Fiat", "Jeep", "Ice Company", "Decora"];
+
+export const instagramReels = [
+  { href: "https://www.instagram.com/gasplab/reel/DOwqJF-gWDg/", title: "Você já utiliza inteligência artificial no seu negócio?", meta: "IA aplicada" },
+  { href: "https://www.instagram.com/gasplab/reel/DOoxb9DgaVR/", title: "Automações que entram na rotina do negócio", meta: "Automação" },
+  { href: "https://www.instagram.com/gasplab/reel/DOmJ3u3gV41/", title: "Ferramentas só fazem sentido quando resolvem o fluxo", meta: "Engenharia" },
+] as const;
 
 export const whatsappUrl = "https://wa.me/5511960624399?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20GaspLab%20e%20quero%20fazer%20um%20diagn%C3%B3stico.";
