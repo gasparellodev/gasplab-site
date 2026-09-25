@@ -13,19 +13,22 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { whatsappUrl } from "@/lib/content";
-const options = [
-  ["site", "Site"],
-  ["automacoes", "Automação"],
-  ["sistemas", "Sistema"],
-  ["integrado", "Solução integrada"],
-  ["nao-sei", "Ainda não sei"],
-];
+import { diagnosticInterests, normalizeInterest } from "@/lib/diagnostic";
+
+const DEFAULT_ERROR_MESSAGE = "Não foi possível enviar agora. Tente novamente ou use o WhatsApp.";
+const RATE_LIMITED_MESSAGE =
+  "Muitas tentativas em pouco tempo. Aguarde alguns minutos ou fale com a gente pelo WhatsApp.";
+const UNAVAILABLE_MESSAGE =
+  "Não foi possível registrar agora. Fale com a gente pelo WhatsApp enquanto resolvemos.";
+
 export function DiagnosticForm() {
   const search = useSearchParams();
-  const initial = search.get("interesse") || "";
-  const [interest, setInterest] = useState(initial);
+  const initial = normalizeInterest(search.get("interesse"));
+  const [interest, setInterest] = useState<string>(initial);
   const [consent, setConsent] = useState(false);
   const [state, setState] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState(DEFAULT_ERROR_MESSAGE);
+  const [startedAt] = useState(() => Date.now());
   const calUrl = process.env.NEXT_PUBLIC_CAL_URL;
   const utms = useMemo(
     () => ({
@@ -44,11 +47,18 @@ export function DiagnosticForm() {
       const res = await fetch("/api/diagnostics", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ ...payload, interest, consent, ...utms }),
+        body: JSON.stringify({ ...payload, interest, consent, startedAt, ...utms }),
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) {
+        if (res.status === 429) setErrorMessage(RATE_LIMITED_MESSAGE);
+        else if (res.status === 503) setErrorMessage(UNAVAILABLE_MESSAGE);
+        else setErrorMessage(DEFAULT_ERROR_MESSAGE);
+        setState("error");
+        return;
+      }
       setState("success");
     } catch {
+      setErrorMessage(DEFAULT_ERROR_MESSAGE);
       setState("error");
     }
   }
@@ -62,13 +72,7 @@ export function DiagnosticForm() {
         </p>
         {calUrl ? (
           <>
-            <a
-              onClick={() => {}}
-              target="_blank"
-              rel="noreferrer"
-              href={calUrl}
-              className="mt-8 btn-primary"
-            >
+            <a target="_blank" rel="noreferrer" href={calUrl} className="mt-8 btn-primary">
               <CalendarDays size={17} /> Abrir agenda
             </a>
             <iframe
@@ -78,10 +82,7 @@ export function DiagnosticForm() {
             />
           </>
         ) : (
-          <a
-            href={whatsappUrl}
-            className="mt-8 btn-primary"
-          >
+          <a href={whatsappUrl} className="mt-8 btn-primary">
             Continuar no WhatsApp <ArrowRight size={17} />
           </a>
         )}
@@ -116,9 +117,9 @@ export function DiagnosticForm() {
             <SelectValue placeholder="Selecione uma frente" />
           </SelectTrigger>
           <SelectContent>
-            {options.map(([v, l]) => (
-              <SelectItem key={v} value={v}>
-                {l}
+            {diagnosticInterests.map(({ value, label }) => (
+              <SelectItem key={value} value={value}>
+                {label}
               </SelectItem>
             ))}
           </SelectContent>
@@ -166,9 +167,17 @@ export function DiagnosticForm() {
         </span>
       </label>
       {state === "error" && (
-        <p role="alert" className="mt-5 text-sm text-danger">
-          Não foi possível enviar agora. Tente novamente ou use o WhatsApp.
-        </p>
+        <div role="alert" className="mt-5 text-sm text-danger">
+          <p>{errorMessage}</p>
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2 inline-flex items-center gap-1.5 text-primary underline underline-offset-4"
+          >
+            Falar no WhatsApp <ArrowRight size={14} />
+          </a>
+        </div>
       )}
       <button
         disabled={state === "sending" || !consent || !interest}
