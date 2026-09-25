@@ -125,9 +125,11 @@ export function DiagnosticForm() {
         </Field>
       </div>
       <div className="mt-5">
-        <label className="mb-2 block text-sm text-soft">Interesse</label>
+        <label htmlFor="interest" className="mb-2 block text-sm text-soft">
+          Interesse
+        </label>
         <Select value={interest} onValueChange={setInterest} required>
-          <SelectTrigger className="h-12 w-full bg-black/10">
+          <SelectTrigger id="interest" className="h-12 w-full bg-black/10">
             <SelectValue placeholder="Selecione uma frente" />
           </SelectTrigger>
           <SelectContent>

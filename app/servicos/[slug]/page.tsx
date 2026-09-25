@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { PageShell } from "@/components/site-shell";
-import { DemoStrip } from "@/components/visuals";
+import { DemoStrip } from "@/components/demo-strip";
 import { serviceDetails, services, type ServiceSlug } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -50,7 +50,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <ul className="mt-7 space-y-5">
                 {d.fits.map((x) => (
                   <li className="flex gap-3 text-soft" key={x}>
-                    <CheckCircle2 size={18} className="mt-1 shrink-0 text-signal" aria-hidden="true" />
+                    <CheckCircle2
+                      size={18}
+                      className="mt-1 shrink-0 text-signal"
+                      aria-hidden="true"
+                    />
                     {x}
                   </li>
                 ))}
@@ -61,7 +65,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <ul className="mt-7 space-y-5">
                 {d.deliver.map((x) => (
                   <li className="flex gap-3 text-soft" key={x}>
-                    <CheckCircle2 size={18} className="mt-1 shrink-0 text-primary" aria-hidden="true" />
+                    <CheckCircle2
+                      size={18}
+                      className="mt-1 shrink-0 text-primary"
+                      aria-hidden="true"
+                    />
                     {x}
                   </li>
                 ))}

@@ -14,7 +14,7 @@ const schema = z.object({
   url: z.union([z.literal(""), z.string().url().max(300)]).optional(),
   consent: z.literal(true),
   // honeypot: campo invisível para humanos; se vier preenchido, é bot.
-  website: z.string().max(0).optional(),
+  website: z.string().max(200).optional(),
   // timestamp (ms) de quando o formulário foi montado no client.
   startedAt: z.number().optional(),
   utmSource: z.string().max(120).optional(),

@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Braces, BrainCircuit, ShieldCheck } from "lucide-react";
 import { PageShell, SectionHead } from "@/components/site-shell";
-import { ArchitectureFlow, DemoStrip, ProcessLab } from "@/components/visuals";
+import { ArchitectureFlow, ProcessLab } from "@/components/visuals";
+import { DemoStrip } from "@/components/demo-strip";
 import { Pillars } from "@/components/sections/pillars";
 import { Offer } from "@/components/sections/offer";
 import { Governance } from "@/components/sections/governance";
@@ -27,7 +28,10 @@ export default function Home() {
   return (
     <PageShell>
       <section className="grid-bg relative overflow-hidden border-b border-primary/15 px-5 py-20 sm:px-8 lg:px-12 lg:py-24">
-        <div className="absolute -left-60 top-0 h-[650px] w-[650px] rounded-full bg-glow/12 blur-[140px]" />
+        <div
+          aria-hidden="true"
+          className="blue-glow pointer-events-none absolute -left-60 top-0 h-[650px] w-[650px]"
+        />
         <div className="relative mx-auto grid max-w-[1440px] items-center gap-14 lg:grid-cols-[1.02fr_.98fr]">
           <div>
             <p className="eyebrow">{hero.eyebrow}</p>
@@ -147,7 +151,9 @@ export default function Home() {
                 </div>
                 <div className="mt-24">
                   <h3 className="text-5xl font-semibold tracking-[-.05em]">{item.title}</h3>
-                  <p className="mt-5 max-w-lg text-lg leading-7 text-muted-foreground">{item.summary}</p>
+                  <p className="mt-5 max-w-lg text-lg leading-7 text-muted-foreground">
+                    {item.summary}
+                  </p>
                   <div className="mt-9 flex flex-wrap gap-2">
                     {item.tags.map((tag) => (
                       <span
@@ -178,7 +184,7 @@ export default function Home() {
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep/55 via-transparent to-transparent" />
             <div className="absolute bottom-5 left-5 rounded-full bg-background/80 px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-signal backdrop-blur">
-              Founder / AI engineer
+              Fundador · Engenheiro de IA
             </div>
           </div>
           <div>
@@ -214,7 +220,11 @@ export default function Home() {
 
       <section className="px-5 py-24 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-[1440px]">
-          <SectionHead eyebrow={fieldNotes.eyebrow} title={fieldNotes.title} body={fieldNotes.body} />
+          <SectionHead
+            eyebrow={fieldNotes.eyebrow}
+            title={fieldNotes.title}
+            body={fieldNotes.body}
+          />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {instagramReels.map((r, i) => (
               <a
@@ -228,7 +238,10 @@ export default function Home() {
                   <span className="font-mono text-[10px] uppercase tracking-widest text-signal">
                     {r.meta}
                   </span>
-                  <ArrowUpRight className="text-subtle group-hover:text-signal" aria-hidden="true" />
+                  <ArrowUpRight
+                    className="text-subtle group-hover:text-signal"
+                    aria-hidden="true"
+                  />
                 </div>
                 <div className="mt-28">
                   <span className="font-mono text-[10px] text-subtle">REEL / 0{i + 1}</span>

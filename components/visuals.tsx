@@ -1,16 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import {
-  Bot,
-  Check,
-  Database,
-  MousePointer2,
-  Network,
-  ScanSearch,
-  Sparkles,
-  Workflow,
-} from "lucide-react";
+import { Bot, Database, Network, ScanSearch } from "lucide-react";
 import { method } from "@/lib/content";
 
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
@@ -65,10 +56,10 @@ export function ArchitectureFlow() {
         <div className="scanline h-px w-1/2" />
       </div>
       <div className="relative z-10 flex items-center justify-between font-mono text-[10px] uppercase tracking-[.14em] text-subtle">
-        <span>Architecture / live</span>
+        <span>Arquitetura / ao vivo</span>
         <span className="flex items-center gap-2">
           <i aria-hidden="true" className="pulse-dot h-2 w-2 rounded-full bg-primary" />
-          Signal online
+          Sinal ativo
         </span>
       </div>
       <div
@@ -95,7 +86,7 @@ export function ArchitectureFlow() {
           />
           <Network className="h-8 w-8 text-signal" aria-hidden="true" />
           <span className="absolute -bottom-7 font-mono text-[9px] uppercase tracking-wider text-signal">
-            Gasp architecture
+            Arquitetura GaspLab
           </span>
         </div>
         <div className="space-y-3">
@@ -135,52 +126,6 @@ export function ArchitectureFlow() {
   );
 }
 
-export function OperationsCanvas() {
-  const [active, setActive] = useState(0);
-  const reducedMotion = usePrefersReducedMotion();
-  useEffect(() => {
-    if (reducedMotion) return;
-    const id = setInterval(() => setActive((v) => (v + 1) % 3), 1800);
-    return () => clearInterval(id);
-  }, [reducedMotion]);
-  const items = ["Contexto", "Arquitetura", "IA aplicada"];
-  return (
-    <div className="panel relative overflow-hidden rounded-[2rem] p-5 sm:p-7">
-      <div className="mb-12 flex items-center justify-between font-mono text-[10px] uppercase tracking-[.14em] text-subtle">
-        <span>GaspLab / blueprint</span>
-        <span className="flex items-center gap-2">
-          <i aria-hidden="true" className="pulse-dot h-2 w-2 rounded-full bg-primary" />
-          Online
-        </span>
-      </div>
-      <div className="relative grid gap-3 sm:grid-cols-3">
-        {items.map((item, i) => (
-          <button
-            key={item}
-            type="button"
-            onClick={() => setActive(i)}
-            aria-pressed={active === i}
-            aria-label={`Ver ${item}`}
-            className={`relative rounded-2xl border p-5 text-left transition-all ${active === i ? "border-primary/60 bg-primary/10" : "border-white/10 bg-black/15"}`}
-          >
-            <span className="font-mono text-[10px] text-subtle">0{i + 1}</span>
-            <p className="mt-7 text-lg font-medium">{item}</p>
-            <div
-              aria-hidden="true"
-              className={`mt-4 h-1 rounded-full ${active === i ? "bg-primary" : "bg-white/10"}`}
-            />
-          </button>
-        ))}
-      </div>
-      <div className="mt-3 grid grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-2xl border border-white/10 bg-background p-4">
-        <div aria-hidden="true" className="h-2 rounded bg-white/10" />
-        <Sparkles size={15} className="text-signal" aria-hidden="true" />
-        <div aria-hidden="true" className="h-2 rounded bg-primary/70" />
-      </div>
-    </div>
-  );
-}
-
 export function ProcessLab() {
   const [mode, setMode] = useState(0);
   const modes = [
@@ -199,7 +144,6 @@ export function ProcessLab() {
               onClick={() => setMode(i)}
               key={m.label}
               aria-pressed={mode === i}
-              aria-label={`Ver modo ${m.label}`}
               className={`border-b border-white/10 p-6 text-left transition sm:border-b-0 ${i > 0 ? "sm:border-l" : ""} ${mode === i ? "bg-primary/10" : ""}`}
             >
               <Icon className={mode === i ? "text-signal" : "text-subtle"} aria-hidden="true" />
@@ -217,76 +161,8 @@ export function ProcessLab() {
         <div className="absolute inset-y-0 left-[80%] w-px bg-primary/30" />
         <div className="relative flex h-full items-center justify-center">
           <div className="rounded-full border border-signal/50 bg-deep px-6 py-3 font-mono text-xs text-signal">
-            {modes[mode].label.toUpperCase()}_ACTIVE
+            {modes[mode].label.toUpperCase()}&nbsp;· ATIVO
           </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export function DemoStrip({ type }: { type: "site" | "automation" | "system" }) {
-  if (type === "site")
-    return (
-      <div className="panel rounded-[1.6rem] p-5">
-        <div className="flex gap-1.5" aria-hidden="true">
-          <i className="h-2 w-2 rounded-full bg-danger" />
-          <i className="h-2 w-2 rounded-full bg-warning" />
-          <i className="h-2 w-2 rounded-full bg-primary" />
-        </div>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2">
-          <div>
-            <span className="eyebrow">Narrativa</span>
-            <p className="mt-3 text-2xl font-medium">Clareza que conduz à ação.</p>
-            <button type="button" className="mt-8 btn-primary px-4 py-2 text-xs">
-              Quero avançar
-            </button>
-          </div>
-          <div className="grid-bg min-h-40 rounded-xl border border-white/10 p-4" aria-hidden="true">
-            <MousePointer2 className="ml-auto text-signal" />
-          </div>
-        </div>
-      </div>
-    );
-  if (type === "automation")
-    return (
-      <div className="panel rounded-[1.6rem] p-5">
-        <div className="flex items-center gap-2 text-sm">
-          <Workflow size={17} className="text-signal" aria-hidden="true" /> Fluxo em execução
-        </div>
-        <div className="mt-7 grid gap-3 sm:grid-cols-3">
-          {["Entrada recebida", "IA classifica", "Time supervisiona"].map((x, i) => (
-            <div key={x} className="rounded-xl border border-white/10 bg-black/20 p-4">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-[10px] text-subtle">0{i + 1}</span>
-                {i < 2 ? (
-                  <Bot size={14} className="text-primary" aria-hidden="true" />
-                ) : (
-                  <Check size={14} className="text-signal" aria-hidden="true" />
-                )}
-              </div>
-              <p className="mt-8 text-sm">{x}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  return (
-    <div className="panel rounded-[1.6rem] p-5">
-      <div className="flex items-center justify-between">
-        <p className="text-sm">Painel operacional</p>
-        <span className="rounded-full bg-primary/10 px-3 py-1 font-mono text-[9px] text-signal">
-          SINCRONIZADO
-        </span>
-      </div>
-      <div className="mt-7 grid grid-cols-2 gap-3">
-        <div className="rounded-xl border border-white/10 p-5">
-          <p className="font-mono text-[10px] text-subtle">PROCESSOS</p>
-          <p className="mt-4 text-3xl">Mapeados</p>
-        </div>
-        <div className="rounded-xl border border-white/10 p-5">
-          <p className="font-mono text-[10px] text-subtle">STATUS</p>
-          <p className="mt-4 text-3xl text-signal">Ativo</p>
         </div>
       </div>
     </div>
