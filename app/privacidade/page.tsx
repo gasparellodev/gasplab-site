@@ -1,0 +1,4 @@
+import { PageShell } from "@/components/site-shell";
+import { Legal } from "@/components/legal";
+export const metadata={title:"Privacidade"};
+export default function Privacy(){return <PageShell><Legal title="Política de privacidade" updated="25 de setembro de 2026"><h2>Dados coletados</h2><p>No diagnóstico, coletamos nome, empresa, contato, segmento, interesse, gargalo descrito, URL opcional, consentimento e parâmetros de campanha. Esses dados são usados para responder à solicitação e organizar o atendimento.</p><h2>Medição</h2><p>Quando ativada, a medição do site registra somente eventos de navegação sem enviar nome, e-mail, telefone ou o conteúdo do diagnóstico.</p><h2>Armazenamento e direitos</h2><p>Os registros são mantidos pelo tempo necessário à relação comercial e às obrigações aplicáveis. Você pode solicitar acesso, correção ou exclusão pelo e-mail vinicius@gasplab.com.</p></Legal></PageShell>}
