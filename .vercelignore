@@ -1,0 +1,7 @@
+# Documentos internos: não enviar para a Vercel
+docs/
+brand/
+PLANO_*.md
+.claude/
+.env*
+!.env.example
