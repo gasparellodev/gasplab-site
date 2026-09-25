@@ -1,6 +1,6 @@
 # GaspLab — Plano de finalização (rebranding + site)
 
-Versão 1 · 25/09/2026 · **Status: aguardando aprovação**
+Versão 1.1 · 25/09/2026 · **Status: aprovado e em execução.** Decisões: D1 = Vercel (não Cloudflare) + GitHub da conta vinygasparello · D2 = cópia em Projetos/GaspLab · D3 = marcas separadas · domínio de lançamento = gasplab.site (Hostinger). Onde este plano cita Cloudflare/D1/workers.dev, leia Vercel/Neon/preview da Vercel.
 Fontes: `GaspLab_Cloud_Handoff.md`, `GaspLab_Context_Vault.md`, `GaspLab_Operacao_Multiagentes.md` e inspeção direta do código.
 
 ---

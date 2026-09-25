@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import { site } from "@/lib/content";
 
 const sans = Space_Grotesk({ subsets: ["latin"], variable: "--font-space" });
 const mono = IBM_Plex_Mono({
@@ -10,12 +11,21 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://gasplab.com.br"),
-  title: { default: "GaspLab — Tecnologia que move negócios", template: "%s | GaspLab" },
-  description:
-    "Sites que convertem, automações com IA e sistemas sob medida para conectar presença, processos e crescimento.",
-  other: {
-    "codex-preview": "development",
+  metadataBase: new URL(site.url),
+  title: { default: site.title, template: `%s | ${site.name}` },
+  description: site.description,
+  openGraph: {
+    title: site.ogTitle,
+    description: site.ogDescription,
+    url: site.url,
+    siteName: site.name,
+    locale: "pt_BR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.ogTitle,
+    description: site.ogDescription,
   },
   icons: {
     icon: "/favicon.svg",

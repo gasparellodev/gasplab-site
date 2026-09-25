@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
-import { cases, services } from "@/lib/content";
+import { cases, services, site } from "@/lib/content";
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://gasplab.com.br";
+  const base = site.url;
   return [
     "",
     "/cases",
