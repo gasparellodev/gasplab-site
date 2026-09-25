@@ -19,5 +19,7 @@ export const diagnostics = sqliteTable("diagnostics", {
   utmMedium: text("utm_medium"),
   utmCampaign: text("utm_campaign"),
   status: text("status").notNull().default("new"),
-  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+  createdAt: text("created_at")
+    .notNull()
+    .default(sql`CURRENT_TIMESTAMP`),
 });

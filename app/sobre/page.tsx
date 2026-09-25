@@ -1,4 +1,110 @@
-import Image from "next/image"; import Link from "next/link"; import { ArrowRight } from "lucide-react"; import { PageShell } from "@/components/site-shell"; import { clientBrands } from "@/lib/content";
-export const metadata={title:"Sobre",description:"A visão, o método e a liderança técnica por trás da GaspLab."};
-const timeline=["2017 · Desenvolvimento de sistemas e operações digitais","2021 · Produtos full stack e experiências conectadas","2022 · Liderança técnica, arquitetura e integrações","2024 · Engenharia em produtos de grande audiência","2025 · IA aplicada, automações e evolução da GaspLab"];
-export default function About(){return <PageShell><section className="grid-bg px-5 py-20 sm:px-8 lg:px-12 lg:py-28"><div className="mx-auto grid max-w-[1440px] gap-14 lg:grid-cols-[1.1fr_.9fr]"><div><p className="eyebrow">Sobre a GaspLab</p><h1 className="display mt-8">Fazer a inteligência caber na realidade do negócio.</h1><p className="mt-8 max-w-2xl text-xl leading-9 text-[#a8b3c7]">A GaspLab é uma empresa de engenharia de software e inteligência artificial aplicada. Entendemos o cenário, mapeamos o processo e construímos a arquitetura para a tecnologia fluir com a operação.</p></div><div className="panel self-end rounded-[2rem] p-8"><p className="eyebrow">Princípio</p><p className="mt-7 text-2xl leading-10">Contexto antes da tecnologia. Arquitetura antes da automação. Adoção antes do espetáculo.</p></div></div></section><section className="border-y border-[#4d7cff]/15 px-5 py-24 sm:px-8 lg:px-12"><div className="mx-auto grid max-w-[1440px] gap-16 lg:grid-cols-[.75fr_1.25fr]"><div><div className="relative overflow-hidden rounded-[2rem]"><Image src="/vinicius-gasparello.jpg" width={640} height={640} alt="Vinícius Gasparello" className="aspect-[4/5] w-full object-cover"/></div><p className="eyebrow mt-8">Fundador e liderança técnica</p></div><div><h2 className="title">Vinícius Gasparello</h2><p className="mt-7 max-w-3xl text-lg leading-8 text-[#a8b3c7]">Engenheiro de software e IA com nove anos de experiência em arquitetura escalável, produtos digitais, automação e liderança técnica. Criou a GaspLab para transformar conhecimento técnico em uma forma mais cuidadosa de introduzir inteligência dentro das empresas.</p><p className="mt-6 max-w-3xl text-lg leading-8 text-[#a8b3c7]">A convicção é simples: antes de escolher uma ferramenta, precisamos compreender as pessoas, os dados, as decisões e as exceções que fazem o negócio funcionar.</p><div className="mt-12 border-l border-[#4d7cff]/35 pl-7">{timeline.map((x,i)=><p key={x} className={`py-4 text-[#c7d1e5] ${i<timeline.length-1?'border-b border-white/10':''}`}>{x}</p>)}</div></div></div></section><section className="px-5 py-24 sm:px-8 lg:px-12"><div className="mx-auto max-w-[1440px]"><p className="eyebrow">Clientes e projetos</p><h2 className="title mt-6 max-w-4xl">Experiência construída dentro de operações reais.</h2><div className="mt-12 grid grid-cols-2 border-l border-t border-[#4d7cff]/15 md:grid-cols-4">{clientBrands.map(x=><div className="flex min-h-32 items-center border-b border-r border-[#4d7cff]/15 p-5 text-lg font-semibold text-[#dce8ff]" key={x}>{x}</div>)}</div><p className="mt-5 max-w-3xl text-sm leading-6 text-[#7f8aa3]">A seleção reúne clientes, projetos de prestação de serviço, parcerias e organizações da trajetória profissional de Vinícius. Cada case detalhado identifica o escopo e a natureza da participação.</p><Link href="/diagnostico" className="mt-10 inline-flex items-center gap-2 font-semibold text-[#70e1ff]">Levar essa experiência para seu desafio <ArrowRight size={17}/></Link></div></section></PageShell>}
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { PageShell } from "@/components/site-shell";
+import { clientBrands } from "@/lib/content";
+export const metadata = {
+  title: "Sobre",
+  description: "A visão, o método e a liderança técnica por trás da GaspLab.",
+};
+const timeline = [
+  "2017 · Desenvolvimento de sistemas e operações digitais",
+  "2021 · Produtos full stack e experiências conectadas",
+  "2022 · Liderança técnica, arquitetura e integrações",
+  "2024 · Engenharia em produtos de grande audiência",
+  "2025 · IA aplicada, automações e evolução da GaspLab",
+];
+export default function About() {
+  return (
+    <PageShell>
+      <section className="grid-bg px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <div className="mx-auto grid max-w-[1440px] gap-14 lg:grid-cols-[1.1fr_.9fr]">
+          <div>
+            <p className="eyebrow">Sobre a GaspLab</p>
+            <h1 className="display mt-8">Fazer a inteligência caber na realidade do negócio.</h1>
+            <p className="mt-8 max-w-2xl text-xl leading-9 text-[#a8b3c7]">
+              A GaspLab é uma empresa de engenharia de software e inteligência artificial aplicada.
+              Entendemos o cenário, mapeamos o processo e construímos a arquitetura para a
+              tecnologia fluir com a operação.
+            </p>
+          </div>
+          <div className="panel self-end rounded-[2rem] p-8">
+            <p className="eyebrow">Princípio</p>
+            <p className="mt-7 text-2xl leading-10">
+              Contexto antes da tecnologia. Arquitetura antes da automação. Adoção antes do
+              espetáculo.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="border-y border-[#4d7cff]/15 px-5 py-24 sm:px-8 lg:px-12">
+        <div className="mx-auto grid max-w-[1440px] gap-16 lg:grid-cols-[.75fr_1.25fr]">
+          <div>
+            <div className="relative overflow-hidden rounded-[2rem]">
+              <Image
+                src="/vinicius-gasparello.jpg"
+                width={640}
+                height={640}
+                alt="Vinícius Gasparello"
+                className="aspect-[4/5] w-full object-cover"
+              />
+            </div>
+            <p className="eyebrow mt-8">Fundador e liderança técnica</p>
+          </div>
+          <div>
+            <h2 className="title">Vinícius Gasparello</h2>
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-[#a8b3c7]">
+              Engenheiro de software e IA com nove anos de experiência em arquitetura escalável,
+              produtos digitais, automação e liderança técnica. Criou a GaspLab para transformar
+              conhecimento técnico em uma forma mais cuidadosa de introduzir inteligência dentro das
+              empresas.
+            </p>
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-[#a8b3c7]">
+              A convicção é simples: antes de escolher uma ferramenta, precisamos compreender as
+              pessoas, os dados, as decisões e as exceções que fazem o negócio funcionar.
+            </p>
+            <div className="mt-12 border-l border-[#4d7cff]/35 pl-7">
+              {timeline.map((x, i) => (
+                <p
+                  key={x}
+                  className={`py-4 text-[#c7d1e5] ${i < timeline.length - 1 ? "border-b border-white/10" : ""}`}
+                >
+                  {x}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="px-5 py-24 sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-[1440px]">
+          <p className="eyebrow">Clientes e projetos</p>
+          <h2 className="title mt-6 max-w-4xl">
+            Experiência construída dentro de operações reais.
+          </h2>
+          <div className="mt-12 grid grid-cols-2 border-l border-t border-[#4d7cff]/15 md:grid-cols-4">
+            {clientBrands.map((x) => (
+              <div
+                className="flex min-h-32 items-center border-b border-r border-[#4d7cff]/15 p-5 text-lg font-semibold text-[#dce8ff]"
+                key={x}
+              >
+                {x}
+              </div>
+            ))}
+          </div>
+          <p className="mt-5 max-w-3xl text-sm leading-6 text-[#7f8aa3]">
+            A seleção reúne clientes, projetos de prestação de serviço, parcerias e organizações da
+            trajetória profissional de Vinícius. Cada case detalhado identifica o escopo e a
+            natureza da participação.
+          </p>
+          <Link
+            href="/diagnostico"
+            className="mt-10 inline-flex items-center gap-2 font-semibold text-[#70e1ff]"
+          >
+            Levar essa experiência para seu desafio <ArrowRight size={17} />
+          </Link>
+        </div>
+      </section>
+    </PageShell>
+  );
+}

@@ -1,35 +1,249 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Bot, Check, Database, MousePointer2, Network, ScanSearch, Sparkles, Workflow } from "lucide-react";
+import {
+  Bot,
+  Check,
+  Database,
+  MousePointer2,
+  Network,
+  ScanSearch,
+  Sparkles,
+  Workflow,
+} from "lucide-react";
 
 export function ArchitectureFlow() {
-  const [stage,setStage]=useState(0); const wrap=useRef<HTMLDivElement>(null);
-  useEffect(()=>{const id=setInterval(()=>setStage(v=>(v+1)%5),1800);return()=>clearInterval(id)},[]);
-  useEffect(()=>{const el=wrap.current;if(!el)return;const move=(e:PointerEvent)=>{const r=el.getBoundingClientRect();el.style.setProperty('--mx',`${((e.clientX-r.left)/r.width-.5)*14}px`);el.style.setProperty('--my',`${((e.clientY-r.top)/r.height-.5)*14}px`)};el.addEventListener('pointermove',move);return()=>el.removeEventListener('pointermove',move)},[]);
-  const steps=["Entender","Mapear","Arquitetar","Integrar","Evoluir"];
-  return <div ref={wrap} className="blue-glow panel relative min-h-[510px] overflow-hidden rounded-[2rem] p-5 sm:p-7">
-    <div className="absolute inset-x-0 top-1/2 h-px overflow-hidden"><div className="scanline h-px w-1/2"/></div>
-    <div className="relative z-10 flex items-center justify-between font-mono text-[10px] uppercase tracking-[.14em] text-[#7f8aa3]"><span>Architecture / live</span><span className="flex items-center gap-2"><i className="pulse-dot h-2 w-2 rounded-full bg-[#4d7cff]"/>Signal online</span></div>
-    <div className="relative z-10 mt-12 grid grid-cols-[1fr_auto_1fr] items-center gap-3" style={{transform:'translate3d(var(--mx,0),var(--my,0),0)',transition:'transform .3s ease-out'}}>
-      <div className="space-y-3">{["Dados dispersos","Processo manual","Ferramentas isoladas"].map((x,i)=><div key={x} className={`rounded-xl border p-3 text-xs transition-all ${stage>=i?"border-[#4d7cff]/50 bg-[#4d7cff]/10 text-white":"border-white/10 text-[#65708a]"}`}>{x}</div>)}</div>
-      <div className="relative flex h-32 w-32 items-center justify-center rounded-full border border-[#4d7cff]/40 bg-[#0a1020] shadow-[0_0_70px_#2456ff33]"><div className="absolute inset-3 animate-[spin_12s_linear_infinite] rounded-full border border-dashed border-[#70e1ff]/35"/><Network className="h-8 w-8 text-[#70e1ff]"/><span className="absolute -bottom-7 font-mono text-[9px] uppercase tracking-wider text-[#70e1ff]">Gasp architecture</span></div>
-      <div className="space-y-3">{["IA aplicada","Fluxo conectado","Decisão visível"].map((x,i)=><div key={x} className={`rounded-xl border p-3 text-xs transition-all ${stage>=i+2?"border-[#70e1ff]/50 bg-[#70e1ff]/10 text-white":"border-white/10 text-[#65708a]"}`}>{x}</div>)}</div>
+  const [stage, setStage] = useState(0);
+  const wrap = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const id = setInterval(() => setStage((v) => (v + 1) % 5), 1800);
+    return () => clearInterval(id);
+  }, []);
+  useEffect(() => {
+    const el = wrap.current;
+    if (!el) return;
+    const move = (e: PointerEvent) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty("--mx", `${((e.clientX - r.left) / r.width - 0.5) * 14}px`);
+      el.style.setProperty("--my", `${((e.clientY - r.top) / r.height - 0.5) * 14}px`);
+    };
+    el.addEventListener("pointermove", move);
+    return () => el.removeEventListener("pointermove", move);
+  }, []);
+  const steps = ["Entender", "Mapear", "Arquitetar", "Integrar", "Evoluir"];
+  return (
+    <div
+      ref={wrap}
+      className="blue-glow panel relative min-h-[510px] overflow-hidden rounded-[2rem] p-5 sm:p-7"
+    >
+      <div className="absolute inset-x-0 top-1/2 h-px overflow-hidden">
+        <div className="scanline h-px w-1/2" />
+      </div>
+      <div className="relative z-10 flex items-center justify-between font-mono text-[10px] uppercase tracking-[.14em] text-[#7f8aa3]">
+        <span>Architecture / live</span>
+        <span className="flex items-center gap-2">
+          <i className="pulse-dot h-2 w-2 rounded-full bg-[#4d7cff]" />
+          Signal online
+        </span>
+      </div>
+      <div
+        className="relative z-10 mt-12 grid grid-cols-[1fr_auto_1fr] items-center gap-3"
+        style={{
+          transform: "translate3d(var(--mx,0),var(--my,0),0)",
+          transition: "transform .3s ease-out",
+        }}
+      >
+        <div className="space-y-3">
+          {["Dados dispersos", "Processo manual", "Ferramentas isoladas"].map((x, i) => (
+            <div
+              key={x}
+              className={`rounded-xl border p-3 text-xs transition-all ${stage >= i ? "border-[#4d7cff]/50 bg-[#4d7cff]/10 text-white" : "border-white/10 text-[#65708a]"}`}
+            >
+              {x}
+            </div>
+          ))}
+        </div>
+        <div className="relative flex h-32 w-32 items-center justify-center rounded-full border border-[#4d7cff]/40 bg-[#0a1020] shadow-[0_0_70px_#2456ff33]">
+          <div className="absolute inset-3 animate-[spin_12s_linear_infinite] rounded-full border border-dashed border-[#70e1ff]/35" />
+          <Network className="h-8 w-8 text-[#70e1ff]" />
+          <span className="absolute -bottom-7 font-mono text-[9px] uppercase tracking-wider text-[#70e1ff]">
+            Gasp architecture
+          </span>
+        </div>
+        <div className="space-y-3">
+          {["IA aplicada", "Fluxo conectado", "Decisão visível"].map((x, i) => (
+            <div
+              key={x}
+              className={`rounded-xl border p-3 text-xs transition-all ${stage >= i + 2 ? "border-[#70e1ff]/50 bg-[#70e1ff]/10 text-white" : "border-white/10 text-[#65708a]"}`}
+            >
+              {x}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="relative z-10 mt-20 grid grid-cols-5 gap-1">
+        {steps.map((x, i) => (
+          <button key={x} onClick={() => setStage(i)} className="text-left">
+            <span
+              className={`block h-1 rounded-full transition-all ${i <= stage ? "bg-[#4d7cff]" : "bg-white/10"}`}
+            />
+            <span
+              className={`mt-2 hidden font-mono text-[8px] uppercase sm:block ${i === stage ? "text-[#70e1ff]" : "text-[#65708a]"}`}
+            >
+              {x}
+            </span>
+          </button>
+        ))}
+      </div>
     </div>
-    <div className="relative z-10 mt-20 grid grid-cols-5 gap-1">{steps.map((x,i)=><button key={x} onClick={()=>setStage(i)} className="text-left"><span className={`block h-1 rounded-full transition-all ${i<=stage?"bg-[#4d7cff]":"bg-white/10"}`}/><span className={`mt-2 hidden font-mono text-[8px] uppercase sm:block ${i===stage?"text-[#70e1ff]":"text-[#65708a]"}`}>{x}</span></button>)}</div>
-  </div>
+  );
 }
 
 export function OperationsCanvas() {
-  const [active, setActive] = useState(0); useEffect(()=>{const id=setInterval(()=>setActive(v=>(v+1)%3),1800);return()=>clearInterval(id)},[]);
-  const items=["Contexto","Arquitetura","IA aplicada"];
-  return <div className="panel relative overflow-hidden rounded-[2rem] p-5 sm:p-7"><div className="mb-12 flex items-center justify-between font-mono text-[10px] uppercase tracking-[.14em] text-[#70798d]"><span>GaspLab / blueprint</span><span className="flex items-center gap-2"><i className="pulse-dot h-2 w-2 rounded-full bg-[#4d7cff]"/>Online</span></div><div className="relative grid gap-3 sm:grid-cols-3">{items.map((item,i)=><button key={item} onClick={()=>setActive(i)} className={`relative rounded-2xl border p-5 text-left transition-all ${active===i?"border-[#4d7cff]/60 bg-[#4d7cff]/10":"border-white/10 bg-black/15"}`}><span className="font-mono text-[10px] text-[#70798d]">0{i+1}</span><p className="mt-7 text-lg font-medium">{item}</p><div className={`mt-4 h-1 rounded-full ${active===i?"bg-[#4d7cff]":"bg-white/10"}`}/></button>)}</div><div className="mt-3 grid grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-2xl border border-white/10 bg-[#070a12] p-4"><div className="h-2 rounded bg-white/10"/><Sparkles size={15} className="text-[#70e1ff]"/><div className="h-2 rounded bg-[#4d7cff]/70"/></div></div>;
+  const [active, setActive] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setActive((v) => (v + 1) % 3), 1800);
+    return () => clearInterval(id);
+  }, []);
+  const items = ["Contexto", "Arquitetura", "IA aplicada"];
+  return (
+    <div className="panel relative overflow-hidden rounded-[2rem] p-5 sm:p-7">
+      <div className="mb-12 flex items-center justify-between font-mono text-[10px] uppercase tracking-[.14em] text-[#70798d]">
+        <span>GaspLab / blueprint</span>
+        <span className="flex items-center gap-2">
+          <i className="pulse-dot h-2 w-2 rounded-full bg-[#4d7cff]" />
+          Online
+        </span>
+      </div>
+      <div className="relative grid gap-3 sm:grid-cols-3">
+        {items.map((item, i) => (
+          <button
+            key={item}
+            onClick={() => setActive(i)}
+            className={`relative rounded-2xl border p-5 text-left transition-all ${active === i ? "border-[#4d7cff]/60 bg-[#4d7cff]/10" : "border-white/10 bg-black/15"}`}
+          >
+            <span className="font-mono text-[10px] text-[#70798d]">0{i + 1}</span>
+            <p className="mt-7 text-lg font-medium">{item}</p>
+            <div
+              className={`mt-4 h-1 rounded-full ${active === i ? "bg-[#4d7cff]" : "bg-white/10"}`}
+            />
+          </button>
+        ))}
+      </div>
+      <div className="mt-3 grid grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-2xl border border-white/10 bg-[#070a12] p-4">
+        <div className="h-2 rounded bg-white/10" />
+        <Sparkles size={15} className="text-[#70e1ff]" />
+        <div className="h-2 rounded bg-[#4d7cff]/70" />
+      </div>
+    </div>
+  );
 }
 
-export function ProcessLab(){const [mode,setMode]=useState(0);const modes=[{label:"Entrada",icon:ScanSearch,text:"Mapeamos o cenário real"},{label:"Arquitetura",icon:Database,text:"Organizamos dados e decisões"},{label:"Operação",icon:Bot,text:"Integramos IA com supervisão"}];return <div className="panel overflow-hidden rounded-[2rem]"><div className="grid sm:grid-cols-3">{modes.map((m,i)=>{const Icon=m.icon;return <button onClick={()=>setMode(i)} key={m.label} className={`border-b border-white/10 p-6 text-left transition sm:border-b-0 ${i>0?'sm:border-l':''} ${mode===i?'bg-[#4d7cff]/10':''}`}><Icon className={mode===i?'text-[#70e1ff]':'text-[#65708a]'}/><p className="mt-8 font-mono text-[10px] uppercase tracking-widest text-[#7f8aa3]">0{i+1} / {m.label}</p><p className="mt-3 text-lg">{m.text}</p></button>})}</div><div className="grid-bg relative min-h-56 border-t border-white/10 p-7"><div className="absolute inset-y-0 left-[20%] w-px bg-[#4d7cff]/30"/><div className="absolute inset-y-0 left-1/2 w-px bg-[#4d7cff]/30"/><div className="absolute inset-y-0 left-[80%] w-px bg-[#4d7cff]/30"/><div className="relative flex h-full items-center justify-center"><div className="rounded-full border border-[#70e1ff]/50 bg-[#0b1530] px-6 py-3 font-mono text-xs text-[#70e1ff]">{modes[mode].label.toUpperCase()}_ACTIVE</div></div></div></div>}
+export function ProcessLab() {
+  const [mode, setMode] = useState(0);
+  const modes = [
+    { label: "Entrada", icon: ScanSearch, text: "Mapeamos o cenário real" },
+    { label: "Arquitetura", icon: Database, text: "Organizamos dados e decisões" },
+    { label: "Operação", icon: Bot, text: "Integramos IA com supervisão" },
+  ];
+  return (
+    <div className="panel overflow-hidden rounded-[2rem]">
+      <div className="grid sm:grid-cols-3">
+        {modes.map((m, i) => {
+          const Icon = m.icon;
+          return (
+            <button
+              onClick={() => setMode(i)}
+              key={m.label}
+              className={`border-b border-white/10 p-6 text-left transition sm:border-b-0 ${i > 0 ? "sm:border-l" : ""} ${mode === i ? "bg-[#4d7cff]/10" : ""}`}
+            >
+              <Icon className={mode === i ? "text-[#70e1ff]" : "text-[#65708a]"} />
+              <p className="mt-8 font-mono text-[10px] uppercase tracking-widest text-[#7f8aa3]">
+                0{i + 1} / {m.label}
+              </p>
+              <p className="mt-3 text-lg">{m.text}</p>
+            </button>
+          );
+        })}
+      </div>
+      <div className="grid-bg relative min-h-56 border-t border-white/10 p-7">
+        <div className="absolute inset-y-0 left-[20%] w-px bg-[#4d7cff]/30" />
+        <div className="absolute inset-y-0 left-1/2 w-px bg-[#4d7cff]/30" />
+        <div className="absolute inset-y-0 left-[80%] w-px bg-[#4d7cff]/30" />
+        <div className="relative flex h-full items-center justify-center">
+          <div className="rounded-full border border-[#70e1ff]/50 bg-[#0b1530] px-6 py-3 font-mono text-xs text-[#70e1ff]">
+            {modes[mode].label.toUpperCase()}_ACTIVE
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function DemoStrip({ type }: { type: "site" | "automation" | "system" }) {
-  if(type==="site")return <div className="panel rounded-[1.6rem] p-5"><div className="flex gap-1.5"><i className="h-2 w-2 rounded-full bg-[#ff665c]"/><i className="h-2 w-2 rounded-full bg-[#eacb5a]"/><i className="h-2 w-2 rounded-full bg-[#4d7cff]"/></div><div className="mt-8 grid gap-5 sm:grid-cols-2"><div><span className="eyebrow">Narrativa</span><p className="mt-3 text-2xl font-medium">Clareza que conduz à ação.</p><button className="mt-8 rounded-full bg-[#4d7cff] px-4 py-2 text-xs font-semibold text-white">Quero avançar</button></div><div className="grid-bg min-h-40 rounded-xl border border-white/10 p-4"><MousePointer2 className="ml-auto text-[#70e1ff]"/></div></div></div>;
-  if(type==="automation")return <div className="panel rounded-[1.6rem] p-5"><div className="flex items-center gap-2 text-sm"><Workflow size={17} className="text-[#70e1ff]"/> Fluxo em execução</div><div className="mt-7 grid gap-3 sm:grid-cols-3">{["Entrada recebida","IA classifica","Time supervisiona"].map((x,i)=><div key={x} className="rounded-xl border border-white/10 bg-black/20 p-4"><div className="flex items-center justify-between"><span className="font-mono text-[10px] text-[#70798d]">0{i+1}</span>{i<2?<Bot size={14} className="text-[#4d7cff]"/>:<Check size={14} className="text-[#70e1ff]"/>}</div><p className="mt-8 text-sm">{x}</p></div>)}</div></div>;
-  return <div className="panel rounded-[1.6rem] p-5"><div className="flex items-center justify-between"><p className="text-sm">Painel operacional</p><span className="rounded-full bg-[#4d7cff]/10 px-3 py-1 font-mono text-[9px] text-[#70e1ff]">SINCRONIZADO</span></div><div className="mt-7 grid grid-cols-2 gap-3"><div className="rounded-xl border border-white/10 p-5"><p className="font-mono text-[10px] text-[#70798d]">PROCESSOS</p><p className="mt-4 text-3xl">24</p></div><div className="rounded-xl border border-white/10 p-5"><p className="font-mono text-[10px] text-[#70798d]">STATUS</p><p className="mt-4 text-3xl text-[#70e1ff]">Ativo</p></div></div></div>;
+  if (type === "site")
+    return (
+      <div className="panel rounded-[1.6rem] p-5">
+        <div className="flex gap-1.5">
+          <i className="h-2 w-2 rounded-full bg-[#ff665c]" />
+          <i className="h-2 w-2 rounded-full bg-[#eacb5a]" />
+          <i className="h-2 w-2 rounded-full bg-[#4d7cff]" />
+        </div>
+        <div className="mt-8 grid gap-5 sm:grid-cols-2">
+          <div>
+            <span className="eyebrow">Narrativa</span>
+            <p className="mt-3 text-2xl font-medium">Clareza que conduz à ação.</p>
+            <button className="mt-8 rounded-full bg-[#4d7cff] px-4 py-2 text-xs font-semibold text-white">
+              Quero avançar
+            </button>
+          </div>
+          <div className="grid-bg min-h-40 rounded-xl border border-white/10 p-4">
+            <MousePointer2 className="ml-auto text-[#70e1ff]" />
+          </div>
+        </div>
+      </div>
+    );
+  if (type === "automation")
+    return (
+      <div className="panel rounded-[1.6rem] p-5">
+        <div className="flex items-center gap-2 text-sm">
+          <Workflow size={17} className="text-[#70e1ff]" /> Fluxo em execução
+        </div>
+        <div className="mt-7 grid gap-3 sm:grid-cols-3">
+          {["Entrada recebida", "IA classifica", "Time supervisiona"].map((x, i) => (
+            <div key={x} className="rounded-xl border border-white/10 bg-black/20 p-4">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-[10px] text-[#70798d]">0{i + 1}</span>
+                {i < 2 ? (
+                  <Bot size={14} className="text-[#4d7cff]" />
+                ) : (
+                  <Check size={14} className="text-[#70e1ff]" />
+                )}
+              </div>
+              <p className="mt-8 text-sm">{x}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  return (
+    <div className="panel rounded-[1.6rem] p-5">
+      <div className="flex items-center justify-between">
+        <p className="text-sm">Painel operacional</p>
+        <span className="rounded-full bg-[#4d7cff]/10 px-3 py-1 font-mono text-[9px] text-[#70e1ff]">
+          SINCRONIZADO
+        </span>
+      </div>
+      <div className="mt-7 grid grid-cols-2 gap-3">
+        <div className="rounded-xl border border-white/10 p-5">
+          <p className="font-mono text-[10px] text-[#70798d]">PROCESSOS</p>
+          <p className="mt-4 text-3xl">24</p>
+        </div>
+        <div className="rounded-xl border border-white/10 p-5">
+          <p className="font-mono text-[10px] text-[#70798d]">STATUS</p>
+          <p className="mt-4 text-3xl text-[#70e1ff]">Ativo</p>
+        </div>
+      </div>
+    </div>
+  );
 }
