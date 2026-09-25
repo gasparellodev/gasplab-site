@@ -55,9 +55,9 @@ export function DiagnosticForm() {
   if (state === "success")
     return (
       <div className="panel rounded-[2rem] p-8 sm:p-12" aria-live="polite">
-        <CheckCircle2 className="h-10 w-10 text-[#b8ff3d]" />
+        <CheckCircle2 className="h-10 w-10 text-signal" />
         <h2 className="mt-8 text-4xl font-semibold tracking-tight">Contexto recebido.</h2>
-        <p className="mt-5 max-w-xl leading-7 text-[#a8adb3]">
+        <p className="mt-5 max-w-xl leading-7 text-muted-foreground">
           Obrigado. Seu diagnóstico entrou na fila inicial da GaspLab. Escolha o próximo passo:
         </p>
         {calUrl ? (
@@ -67,7 +67,7 @@ export function DiagnosticForm() {
               target="_blank"
               rel="noreferrer"
               href={calUrl}
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#b8ff3d] px-6 py-3 font-semibold text-black"
+              className="mt-8 btn-primary"
             >
               <CalendarDays size={17} /> Abrir agenda
             </a>
@@ -80,7 +80,7 @@ export function DiagnosticForm() {
         ) : (
           <a
             href={whatsappUrl}
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#b8ff3d] px-6 py-3 font-semibold text-black"
+            className="mt-8 btn-primary"
           >
             Continuar no WhatsApp <ArrowRight size={17} />
           </a>
@@ -110,7 +110,7 @@ export function DiagnosticForm() {
         </Field>
       </div>
       <div className="mt-5">
-        <label className="mb-2 block text-sm text-[#d6d8d4]">Interesse</label>
+        <label className="mb-2 block text-sm text-soft">Interesse</label>
         <Select value={interest} onValueChange={setInterest} required>
           <SelectTrigger className="h-12 w-full bg-black/10">
             <SelectValue placeholder="Selecione uma frente" />
@@ -153,7 +153,7 @@ export function DiagnosticForm() {
         className="absolute -left-[9999px]"
         aria-hidden="true"
       />
-      <label className="mt-6 flex items-start gap-3 text-sm leading-6 text-[#a8adb3]">
+      <label className="mt-6 flex items-start gap-3 text-sm leading-6 text-muted-foreground">
         <Checkbox
           required
           checked={consent}
@@ -166,13 +166,13 @@ export function DiagnosticForm() {
         </span>
       </label>
       {state === "error" && (
-        <p role="alert" className="mt-5 text-sm text-[#ff665c]">
+        <p role="alert" className="mt-5 text-sm text-danger">
           Não foi possível enviar agora. Tente novamente ou use o WhatsApp.
         </p>
       )}
       <button
         disabled={state === "sending" || !consent || !interest}
-        className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#b8ff3d] px-7 py-3.5 font-semibold text-black disabled:cursor-not-allowed disabled:opacity-50"
+        className="mt-8 btn-primary disabled:cursor-not-allowed disabled:opacity-50"
       >
         {state === "sending" ? "Enviando…" : "Enviar diagnóstico"} <ArrowRight size={17} />
       </button>
@@ -182,7 +182,7 @@ export function DiagnosticForm() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-2 block text-sm text-[#d6d8d4]">{label}</span>
+      <span className="mb-2 block text-sm text-soft">{label}</span>
       {children}
     </label>
   );

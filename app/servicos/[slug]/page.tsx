@@ -84,10 +84,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <div className="mx-auto max-w-[1440px]">
           <p className="eyebrow">Serviço / {service.index}</p>
           <h1 className="display mt-8 max-w-6xl">{d.promise}</h1>
-          <p className="mt-8 max-w-2xl text-xl leading-8 text-[#a8adb3]">{d.intro}</p>
+          <p className="mt-8 max-w-2xl text-xl leading-8 text-muted-foreground">{d.intro}</p>
           <Link
             href={`/diagnostico?interesse=${slug}`}
-            className="mt-10 inline-flex items-center gap-2 rounded-full bg-[#b8ff3d] px-6 py-3 font-semibold text-black"
+            className="mt-10 btn-primary"
           >
             Conversar sobre este desafio <ArrowRight size={17} />
           </Link>
@@ -106,8 +106,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <p className="eyebrow">Faz sentido quando</p>
               <ul className="mt-7 space-y-5">
                 {d.fits.map((x) => (
-                  <li className="flex gap-3 text-[#c8cbc7]" key={x}>
-                    <CheckCircle2 size={18} className="mt-1 shrink-0 text-[#b8ff3d]" />
+                  <li className="flex gap-3 text-soft" key={x}>
+                    <CheckCircle2 size={18} className="mt-1 shrink-0 text-signal" />
                     {x}
                   </li>
                 ))}
@@ -117,8 +117,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <p className="eyebrow">O que conectamos</p>
               <ul className="mt-7 space-y-5">
                 {d.deliver.map((x) => (
-                  <li className="flex gap-3 text-[#c8cbc7]" key={x}>
-                    <CheckCircle2 size={18} className="mt-1 shrink-0 text-[#6c8cff]" />
+                  <li className="flex gap-3 text-soft" key={x}>
+                    <CheckCircle2 size={18} className="mt-1 shrink-0 text-primary" />
                     {x}
                   </li>
                 ))}
@@ -134,7 +134,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </h2>
         <Link
           href={`/diagnostico?interesse=${slug}`}
-          className="mt-9 inline-flex items-center gap-2 rounded-full bg-[#b8ff3d] px-7 py-3.5 font-semibold text-black"
+          className="mt-9 btn-primary"
         >
           Começar agora <ArrowRight size={17} />
         </Link>

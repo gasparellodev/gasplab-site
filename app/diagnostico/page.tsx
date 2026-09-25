@@ -14,11 +14,11 @@ export default function Diagnostic() {
           <div>
             <p className="eyebrow">Diagnóstico GaspLab</p>
             <h1 className="title mt-7">Comece pelo problema, não pela ferramenta.</h1>
-            <p className="mt-7 text-lg leading-8 text-[#a8adb3]">
+            <p className="mt-7 text-lg leading-8 text-muted-foreground">
               Conte onde a operação perde tempo, clareza ou oportunidade. A GaspLab organiza o
               contexto para apontar uma rota possível.
             </p>
-            <div className="mt-10 space-y-4 font-mono text-xs uppercase tracking-widest text-[#70757c]">
+            <div className="mt-10 space-y-4 font-mono text-xs uppercase tracking-widest text-subtle">
               <p>01 · Você compartilha o cenário</p>
               <p>02 · A GaspLab lê o contexto</p>
               <p>03 · Conversamos sobre o próximo passo</p>

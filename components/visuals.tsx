@@ -39,10 +39,10 @@ export function ArchitectureFlow() {
       <div className="absolute inset-x-0 top-1/2 h-px overflow-hidden">
         <div className="scanline h-px w-1/2" />
       </div>
-      <div className="relative z-10 flex items-center justify-between font-mono text-[10px] uppercase tracking-[.14em] text-[#7f8aa3]">
+      <div className="relative z-10 flex items-center justify-between font-mono text-[10px] uppercase tracking-[.14em] text-subtle">
         <span>Architecture / live</span>
         <span className="flex items-center gap-2">
-          <i className="pulse-dot h-2 w-2 rounded-full bg-[#4d7cff]" />
+          <i className="pulse-dot h-2 w-2 rounded-full bg-primary" />
           Signal online
         </span>
       </div>
@@ -57,16 +57,16 @@ export function ArchitectureFlow() {
           {["Dados dispersos", "Processo manual", "Ferramentas isoladas"].map((x, i) => (
             <div
               key={x}
-              className={`rounded-xl border p-3 text-xs transition-all ${stage >= i ? "border-[#4d7cff]/50 bg-[#4d7cff]/10 text-white" : "border-white/10 text-[#65708a]"}`}
+              className={`rounded-xl border p-3 text-xs transition-all ${stage >= i ? "border-primary/50 bg-primary/10 text-white" : "border-white/10 text-subtle"}`}
             >
               {x}
             </div>
           ))}
         </div>
-        <div className="relative flex h-32 w-32 items-center justify-center rounded-full border border-[#4d7cff]/40 bg-[#0a1020] shadow-[0_0_70px_#2456ff33]">
-          <div className="absolute inset-3 animate-[spin_12s_linear_infinite] rounded-full border border-dashed border-[#70e1ff]/35" />
-          <Network className="h-8 w-8 text-[#70e1ff]" />
-          <span className="absolute -bottom-7 font-mono text-[9px] uppercase tracking-wider text-[#70e1ff]">
+        <div className="relative flex h-32 w-32 items-center justify-center rounded-full border border-primary/40 bg-deep shadow-[0_0_70px_color-mix(in_srgb,var(--glow)_20%,transparent)]">
+          <div className="absolute inset-3 animate-[spin_12s_linear_infinite] rounded-full border border-dashed border-signal/35" />
+          <Network className="h-8 w-8 text-signal" />
+          <span className="absolute -bottom-7 font-mono text-[9px] uppercase tracking-wider text-signal">
             Gasp architecture
           </span>
         </div>
@@ -74,7 +74,7 @@ export function ArchitectureFlow() {
           {["IA aplicada", "Fluxo conectado", "Decisão visível"].map((x, i) => (
             <div
               key={x}
-              className={`rounded-xl border p-3 text-xs transition-all ${stage >= i + 2 ? "border-[#70e1ff]/50 bg-[#70e1ff]/10 text-white" : "border-white/10 text-[#65708a]"}`}
+              className={`rounded-xl border p-3 text-xs transition-all ${stage >= i + 2 ? "border-signal/50 bg-signal/10 text-white" : "border-white/10 text-subtle"}`}
             >
               {x}
             </div>
@@ -85,10 +85,10 @@ export function ArchitectureFlow() {
         {steps.map((x, i) => (
           <button key={x} onClick={() => setStage(i)} className="text-left">
             <span
-              className={`block h-1 rounded-full transition-all ${i <= stage ? "bg-[#4d7cff]" : "bg-white/10"}`}
+              className={`block h-1 rounded-full transition-all ${i <= stage ? "bg-primary" : "bg-white/10"}`}
             />
             <span
-              className={`mt-2 hidden font-mono text-[8px] uppercase sm:block ${i === stage ? "text-[#70e1ff]" : "text-[#65708a]"}`}
+              className={`mt-2 hidden font-mono text-[8px] uppercase sm:block ${i === stage ? "text-signal" : "text-subtle"}`}
             >
               {x}
             </span>
@@ -108,10 +108,10 @@ export function OperationsCanvas() {
   const items = ["Contexto", "Arquitetura", "IA aplicada"];
   return (
     <div className="panel relative overflow-hidden rounded-[2rem] p-5 sm:p-7">
-      <div className="mb-12 flex items-center justify-between font-mono text-[10px] uppercase tracking-[.14em] text-[#70798d]">
+      <div className="mb-12 flex items-center justify-between font-mono text-[10px] uppercase tracking-[.14em] text-subtle">
         <span>GaspLab / blueprint</span>
         <span className="flex items-center gap-2">
-          <i className="pulse-dot h-2 w-2 rounded-full bg-[#4d7cff]" />
+          <i className="pulse-dot h-2 w-2 rounded-full bg-primary" />
           Online
         </span>
       </div>
@@ -120,20 +120,20 @@ export function OperationsCanvas() {
           <button
             key={item}
             onClick={() => setActive(i)}
-            className={`relative rounded-2xl border p-5 text-left transition-all ${active === i ? "border-[#4d7cff]/60 bg-[#4d7cff]/10" : "border-white/10 bg-black/15"}`}
+            className={`relative rounded-2xl border p-5 text-left transition-all ${active === i ? "border-primary/60 bg-primary/10" : "border-white/10 bg-black/15"}`}
           >
-            <span className="font-mono text-[10px] text-[#70798d]">0{i + 1}</span>
+            <span className="font-mono text-[10px] text-subtle">0{i + 1}</span>
             <p className="mt-7 text-lg font-medium">{item}</p>
             <div
-              className={`mt-4 h-1 rounded-full ${active === i ? "bg-[#4d7cff]" : "bg-white/10"}`}
+              className={`mt-4 h-1 rounded-full ${active === i ? "bg-primary" : "bg-white/10"}`}
             />
           </button>
         ))}
       </div>
-      <div className="mt-3 grid grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-2xl border border-white/10 bg-[#070a12] p-4">
+      <div className="mt-3 grid grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-2xl border border-white/10 bg-background p-4">
         <div className="h-2 rounded bg-white/10" />
-        <Sparkles size={15} className="text-[#70e1ff]" />
-        <div className="h-2 rounded bg-[#4d7cff]/70" />
+        <Sparkles size={15} className="text-signal" />
+        <div className="h-2 rounded bg-primary/70" />
       </div>
     </div>
   );
@@ -155,10 +155,10 @@ export function ProcessLab() {
             <button
               onClick={() => setMode(i)}
               key={m.label}
-              className={`border-b border-white/10 p-6 text-left transition sm:border-b-0 ${i > 0 ? "sm:border-l" : ""} ${mode === i ? "bg-[#4d7cff]/10" : ""}`}
+              className={`border-b border-white/10 p-6 text-left transition sm:border-b-0 ${i > 0 ? "sm:border-l" : ""} ${mode === i ? "bg-primary/10" : ""}`}
             >
-              <Icon className={mode === i ? "text-[#70e1ff]" : "text-[#65708a]"} />
-              <p className="mt-8 font-mono text-[10px] uppercase tracking-widest text-[#7f8aa3]">
+              <Icon className={mode === i ? "text-signal" : "text-subtle"} />
+              <p className="mt-8 font-mono text-[10px] uppercase tracking-widest text-subtle">
                 0{i + 1} / {m.label}
               </p>
               <p className="mt-3 text-lg">{m.text}</p>
@@ -167,11 +167,11 @@ export function ProcessLab() {
         })}
       </div>
       <div className="grid-bg relative min-h-56 border-t border-white/10 p-7">
-        <div className="absolute inset-y-0 left-[20%] w-px bg-[#4d7cff]/30" />
-        <div className="absolute inset-y-0 left-1/2 w-px bg-[#4d7cff]/30" />
-        <div className="absolute inset-y-0 left-[80%] w-px bg-[#4d7cff]/30" />
+        <div className="absolute inset-y-0 left-[20%] w-px bg-primary/30" />
+        <div className="absolute inset-y-0 left-1/2 w-px bg-primary/30" />
+        <div className="absolute inset-y-0 left-[80%] w-px bg-primary/30" />
         <div className="relative flex h-full items-center justify-center">
-          <div className="rounded-full border border-[#70e1ff]/50 bg-[#0b1530] px-6 py-3 font-mono text-xs text-[#70e1ff]">
+          <div className="rounded-full border border-signal/50 bg-deep px-6 py-3 font-mono text-xs text-signal">
             {modes[mode].label.toUpperCase()}_ACTIVE
           </div>
         </div>
@@ -185,20 +185,20 @@ export function DemoStrip({ type }: { type: "site" | "automation" | "system" }) 
     return (
       <div className="panel rounded-[1.6rem] p-5">
         <div className="flex gap-1.5">
-          <i className="h-2 w-2 rounded-full bg-[#ff665c]" />
-          <i className="h-2 w-2 rounded-full bg-[#eacb5a]" />
-          <i className="h-2 w-2 rounded-full bg-[#4d7cff]" />
+          <i className="h-2 w-2 rounded-full bg-danger" />
+          <i className="h-2 w-2 rounded-full bg-warning" />
+          <i className="h-2 w-2 rounded-full bg-primary" />
         </div>
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
           <div>
             <span className="eyebrow">Narrativa</span>
             <p className="mt-3 text-2xl font-medium">Clareza que conduz à ação.</p>
-            <button className="mt-8 rounded-full bg-[#4d7cff] px-4 py-2 text-xs font-semibold text-white">
+            <button className="mt-8 btn-primary px-4 py-2 text-xs">
               Quero avançar
             </button>
           </div>
           <div className="grid-bg min-h-40 rounded-xl border border-white/10 p-4">
-            <MousePointer2 className="ml-auto text-[#70e1ff]" />
+            <MousePointer2 className="ml-auto text-signal" />
           </div>
         </div>
       </div>
@@ -207,17 +207,17 @@ export function DemoStrip({ type }: { type: "site" | "automation" | "system" }) 
     return (
       <div className="panel rounded-[1.6rem] p-5">
         <div className="flex items-center gap-2 text-sm">
-          <Workflow size={17} className="text-[#70e1ff]" /> Fluxo em execução
+          <Workflow size={17} className="text-signal" /> Fluxo em execução
         </div>
         <div className="mt-7 grid gap-3 sm:grid-cols-3">
           {["Entrada recebida", "IA classifica", "Time supervisiona"].map((x, i) => (
             <div key={x} className="rounded-xl border border-white/10 bg-black/20 p-4">
               <div className="flex items-center justify-between">
-                <span className="font-mono text-[10px] text-[#70798d]">0{i + 1}</span>
+                <span className="font-mono text-[10px] text-subtle">0{i + 1}</span>
                 {i < 2 ? (
-                  <Bot size={14} className="text-[#4d7cff]" />
+                  <Bot size={14} className="text-primary" />
                 ) : (
-                  <Check size={14} className="text-[#70e1ff]" />
+                  <Check size={14} className="text-signal" />
                 )}
               </div>
               <p className="mt-8 text-sm">{x}</p>
@@ -230,18 +230,18 @@ export function DemoStrip({ type }: { type: "site" | "automation" | "system" }) 
     <div className="panel rounded-[1.6rem] p-5">
       <div className="flex items-center justify-between">
         <p className="text-sm">Painel operacional</p>
-        <span className="rounded-full bg-[#4d7cff]/10 px-3 py-1 font-mono text-[9px] text-[#70e1ff]">
+        <span className="rounded-full bg-primary/10 px-3 py-1 font-mono text-[9px] text-signal">
           SINCRONIZADO
         </span>
       </div>
       <div className="mt-7 grid grid-cols-2 gap-3">
         <div className="rounded-xl border border-white/10 p-5">
-          <p className="font-mono text-[10px] text-[#70798d]">PROCESSOS</p>
+          <p className="font-mono text-[10px] text-subtle">PROCESSOS</p>
           <p className="mt-4 text-3xl">24</p>
         </div>
         <div className="rounded-xl border border-white/10 p-5">
-          <p className="font-mono text-[10px] text-[#70798d]">STATUS</p>
-          <p className="mt-4 text-3xl text-[#70e1ff]">Ativo</p>
+          <p className="font-mono text-[10px] text-subtle">STATUS</p>
+          <p className="mt-4 text-3xl text-signal">Ativo</p>
         </div>
       </div>
     </div>

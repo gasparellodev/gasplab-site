@@ -35,7 +35,7 @@ export default async function Case({ params }: { params: Promise<{ slug: string 
         <div className="mx-auto max-w-[1440px]">
           <p className="eyebrow">{item.kind}</p>
           <h1 className="display mt-8">{item.title}</h1>
-          <p className="mt-8 max-w-3xl text-xl leading-9 text-[#a8adb3]">{item.summary}</p>
+          <p className="mt-8 max-w-3xl text-xl leading-9 text-muted-foreground">{item.summary}</p>
         </div>
       </section>
       <section className="border-y border-white/10 px-5 py-24 sm:px-8 lg:px-12">
@@ -50,7 +50,7 @@ export default async function Case({ params }: { params: Promise<{ slug: string 
         <h2 className="title mx-auto max-w-4xl">Seu desafio também pode virar um sistema claro.</h2>
         <Link
           href="/diagnostico"
-          className="mt-9 inline-flex items-center gap-2 rounded-full bg-[#b8ff3d] px-7 py-3.5 font-semibold text-black"
+          className="mt-9 btn-primary"
         >
           Começar diagnóstico <ArrowRight size={17} />
         </Link>
@@ -60,10 +60,10 @@ export default async function Case({ params }: { params: Promise<{ slug: string 
 }
 function Block({ n, t, b }: { n: string; t: string; b: string }) {
   return (
-    <article className="bg-[#0a0b0d] p-8 sm:p-12">
-      <span className="font-mono text-xs text-[#b8ff3d]">{n}</span>
+    <article className="bg-sunken p-8 sm:p-12">
+      <span className="font-mono text-xs text-signal">{n}</span>
       <h2 className="mt-12 text-3xl font-medium">{t}</h2>
-      <p className="mt-6 text-lg leading-8 text-[#92989f]">{b}</p>
+      <p className="mt-6 text-lg leading-8 text-muted-foreground">{b}</p>
     </article>
   );
 }

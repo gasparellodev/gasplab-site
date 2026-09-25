@@ -23,33 +23,33 @@ const method = ["Entender", "Mapear", "Arquitetar", "Integrar", "Evoluir"];
 export default function Home() {
   return (
     <PageShell>
-      <section className="grid-bg relative overflow-hidden border-b border-[#4d7cff]/15 px-5 py-20 sm:px-8 lg:px-12 lg:py-24">
-        <div className="absolute -left-60 top-0 h-[650px] w-[650px] rounded-full bg-[#2456ff]/12 blur-[140px]" />
+      <section className="grid-bg relative overflow-hidden border-b border-primary/15 px-5 py-20 sm:px-8 lg:px-12 lg:py-24">
+        <div className="absolute -left-60 top-0 h-[650px] w-[650px] rounded-full bg-glow/12 blur-[140px]" />
         <div className="relative mx-auto grid max-w-[1440px] items-center gap-14 lg:grid-cols-[1.02fr_.98fr]">
           <div>
             <p className="eyebrow">Engenharia de software + inteligência artificial</p>
             <h1 className="display mt-7">
-              Engenharia para a <span className="text-[#70e1ff]">IA funcionar</span> no seu negócio.
+              Engenharia para a <span className="text-signal">IA funcionar</span> no seu negócio.
             </h1>
-            <p className="mt-8 max-w-2xl text-xl leading-9 text-[#a8b3c7]">
+            <p className="mt-8 max-w-2xl text-xl leading-9 text-muted-foreground">
               A GaspLab entende sua operação, mapeia processos e desenha a arquitetura antes de
               integrar automação, software e inteligência artificial.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 href="/diagnostico"
-                className="inline-flex items-center gap-2 rounded-full bg-[#4d7cff] px-6 py-3 font-semibold text-white transition hover:bg-[#70e1ff] hover:text-[#070a12]"
+                className="btn-primary"
               >
                 Começar diagnóstico <ArrowUpRight size={17} />
               </Link>
               <a
                 href="#metodo"
-                className="inline-flex items-center gap-2 rounded-full border border-[#4d7cff]/30 px-6 py-3 font-medium hover:border-[#70e1ff]"
+                className="inline-flex items-center gap-2 rounded-full border border-primary/30 px-6 py-3 font-medium hover:border-signal"
               >
                 Ver como trabalhamos <ArrowRight size={17} />
               </a>
             </div>
-            <p className="mt-7 font-mono text-[10px] uppercase tracking-[.14em] text-[#64708a]">
+            <p className="mt-7 font-mono text-[10px] uppercase tracking-[.14em] text-subtle">
               Contexto → processo → arquitetura → inteligência aplicada
             </p>
           </div>
@@ -64,15 +64,15 @@ export default function Home() {
             <h2 className="title mt-6">
               IA sem arquitetura vira mais uma ferramenta desconectada.
             </h2>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-[#a8b3c7]">
+            <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
               Antes de automatizar, é preciso entender pessoas, dados, decisões e exceções. É aí que
               a GaspLab começa.
             </p>
           </div>
           <div className="grid gap-px overflow-hidden rounded-[2rem] bg-white/10 sm:grid-cols-2">
             {frictions.map((x, i) => (
-              <div key={x} className="bg-[#090d19] p-7">
-                <span className="font-mono text-xs text-[#4d7cff]">0{i + 1}</span>
+              <div key={x} className="bg-sunken p-7">
+                <span className="font-mono text-xs text-primary">0{i + 1}</span>
                 <p className="mt-12 text-2xl font-medium">{x}</p>
               </div>
             ))}
@@ -92,8 +92,8 @@ export default function Home() {
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-5">
             {method.map((x, i) => (
-              <div key={x} className="border-l border-[#4d7cff]/30 pl-4">
-                <span className="font-mono text-[10px] text-[#65708a]">0{i + 1}</span>
+              <div key={x} className="border-l border-primary/30 pl-4">
+                <span className="font-mono text-[10px] text-subtle">0{i + 1}</span>
                 <p className="mt-3 text-lg">{x}</p>
               </div>
             ))}
@@ -101,7 +101,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-[#4d7cff]/15 bg-[#090d19] px-5 py-24 sm:px-8 lg:px-12">
+      <section className="border-y border-primary/15 bg-sunken px-5 py-24 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-[1440px]">
           <SectionHead
             eyebrow="Capacidades"
@@ -116,12 +116,12 @@ export default function Home() {
                 className={`group py-9 lg:px-8 ${i > 0 ? "border-t border-white/10 lg:border-l lg:border-t-0" : ""}`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs text-[#65708a]">{s.index}</span>
-                  <ArrowUpRight className="text-[#65708a] transition group-hover:text-[#70e1ff]" />
+                  <span className="font-mono text-xs text-subtle">{s.index}</span>
+                  <ArrowUpRight className="text-subtle transition group-hover:text-signal" />
                 </div>
                 <h3 className="mt-14 text-3xl font-medium tracking-tight">{s.title}</h3>
-                <p className="mt-5 leading-7 text-[#929db2]">{s.short}</p>
-                <p className="mt-9 text-sm text-[#d6dce8]">{s.outcome}</p>
+                <p className="mt-5 leading-7 text-muted-foreground">{s.short}</p>
+                <p className="mt-9 text-sm text-soft">{s.outcome}</p>
               </Link>
             ))}
           </div>
@@ -140,7 +140,7 @@ export default function Home() {
             <h2 className="mt-5 max-w-4xl text-4xl font-semibold tracking-[-.04em] sm:text-6xl">
               Experiência aplicada em contextos que exigem confiança.
             </h2>
-            <p className="mt-5 max-w-2xl leading-7 text-[#8f9ab0]">
+            <p className="mt-5 max-w-2xl leading-7 text-muted-foreground">
               Projetos e atuações conduzidos pela GaspLab e por Vinícius Gasparello como prestador
               de serviço e liderança técnica.
             </p>
@@ -151,7 +151,7 @@ export default function Home() {
             {[...clientBrands, ...clientBrands].map((x, i) => (
               <div
                 key={`${x}-${i}`}
-                className="flex min-w-48 items-center justify-center rounded-xl border border-[#4d7cff]/20 bg-[#0e1424] px-7 py-5 text-lg font-semibold tracking-tight text-[#dce8ff]"
+                className="flex min-w-48 items-center justify-center rounded-xl border border-primary/20 bg-card px-7 py-5 text-lg font-semibold tracking-tight text-soft"
               >
                 {x}
               </div>
@@ -175,16 +175,16 @@ export default function Home() {
               >
                 <div className="flex items-center justify-between">
                   <span className="eyebrow">{item.kind}</span>
-                  <span className="font-mono text-xs text-[#65708a]">0{i + 1}</span>
+                  <span className="font-mono text-xs text-subtle">0{i + 1}</span>
                 </div>
                 <div className="mt-24">
                   <h3 className="text-5xl font-semibold tracking-[-.05em]">{item.title}</h3>
-                  <p className="mt-5 max-w-lg text-lg leading-7 text-[#929db2]">{item.summary}</p>
+                  <p className="mt-5 max-w-lg text-lg leading-7 text-muted-foreground">{item.summary}</p>
                   <div className="mt-9 flex flex-wrap gap-2">
                     {item.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-[#4d7cff]/20 px-3 py-1 font-mono text-[10px] text-[#a8b3c7]"
+                        className="rounded-full border border-primary/20 px-3 py-1 font-mono text-[10px] text-muted-foreground"
                       >
                         {tag}
                       </span>
@@ -197,7 +197,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-[#eaf3ff] px-5 py-20 text-[#070a12] sm:px-8 lg:px-12">
+      <section className="border-y border-white/10 bg-paper px-5 py-20 text-background sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-[1440px] items-center gap-14 lg:grid-cols-[.85fr_1.15fr]">
           <div className="relative overflow-hidden rounded-[2rem]">
             <Image
@@ -208,25 +208,25 @@ export default function Home() {
               className="aspect-[4/5] w-full object-cover"
               priority
             />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#071536]/55 via-transparent to-transparent" />
-            <div className="absolute bottom-5 left-5 rounded-full bg-[#070a12]/80 px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-[#70e1ff] backdrop-blur">
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep/55 via-transparent to-transparent" />
+            <div className="absolute bottom-5 left-5 rounded-full bg-background/80 px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-signal backdrop-blur">
               Founder / AI engineer
             </div>
           </div>
           <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-[#2f6bff]">
+            <p className="font-mono text-xs uppercase tracking-widest text-paper-accent">
               Vinícius Gasparello
             </p>
             <h2 className="title mt-6">Engenharia próxima. Visão de negócio.</h2>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-[#43516b]">
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-paper-muted">
               Fundador da GaspLab, engenheiro de software e IA com nove anos de experiência em
               arquitetura, produtos digitais, automação e liderança técnica.
             </p>
-            <blockquote className="mt-10 border-l-2 border-[#2f6bff] pl-6 text-2xl leading-10">
+            <blockquote className="mt-10 border-l-2 border-paper-accent pl-6 text-2xl leading-10">
               “A melhor solução de IA não é a mais impressionante. É a que o time consegue usar e o
               negócio consegue evoluir.”
             </blockquote>
-            <div className="mt-8 flex flex-wrap gap-4 text-sm text-[#43516b]">
+            <div className="mt-8 flex flex-wrap gap-4 text-sm text-paper-muted">
               <span className="flex items-center gap-2">
                 <Braces size={16} /> Software
               </span>
@@ -239,7 +239,7 @@ export default function Home() {
             </div>
             <Link
               href="/sobre"
-              className="mt-9 inline-flex items-center gap-2 font-semibold text-[#1f58df]"
+              className="mt-9 inline-flex items-center gap-2 font-semibold text-paper-accent"
             >
               Conheça a trajetória <ArrowRight size={17} />
             </Link>
@@ -264,13 +264,13 @@ export default function Home() {
                 className="group panel min-h-72 rounded-[1.6rem] p-6"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#70e1ff]">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-signal">
                     {r.meta}
                   </span>
-                  <ArrowUpRight className="text-[#65708a] group-hover:text-[#70e1ff]" />
+                  <ArrowUpRight className="text-subtle group-hover:text-signal" />
                 </div>
                 <div className="mt-28">
-                  <span className="font-mono text-[10px] text-[#65708a]">REEL / 0{i + 1}</span>
+                  <span className="font-mono text-[10px] text-subtle">REEL / 0{i + 1}</span>
                   <h3 className="mt-4 text-2xl font-medium leading-8">{r.title}</h3>
                 </div>
               </a>
@@ -283,13 +283,13 @@ export default function Home() {
         <div className="mx-auto max-w-4xl">
           <p className="eyebrow">Diagnóstico de prontidão</p>
           <h2 className="title mt-6">A IA precisa caber no seu negócio — não o contrário.</h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[#a8b3c7]">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
             Vamos entender o cenário, localizar os pontos de alavancagem e desenhar o próximo passo
             com clareza.
           </p>
           <Link
             href="/diagnostico"
-            className="mt-10 inline-flex items-center gap-2 rounded-full bg-[#4d7cff] px-7 py-3.5 font-semibold text-white hover:bg-[#70e1ff] hover:text-[#070a12]"
+            className="mt-10 btn-primary"
           >
             Começar diagnóstico <ArrowUpRight size={17} />
           </Link>

@@ -25,12 +25,12 @@ export default function Cases() {
               >
                 <div className="flex justify-between">
                   <span className="eyebrow">{item.kind}</span>
-                  <ArrowUpRight className="text-[#70757c] group-hover:text-[#b8ff3d]" />
+                  <ArrowUpRight className="text-subtle group-hover:text-signal" />
                 </div>
                 <div className="mt-36">
-                  <span className="font-mono text-xs text-[#70757c]">0{i + 1}</span>
+                  <span className="font-mono text-xs text-subtle">0{i + 1}</span>
                   <h2 className="mt-5 text-6xl font-semibold tracking-[-.06em]">{item.title}</h2>
-                  <p className="mt-5 max-w-lg text-lg leading-8 text-[#92989f]">{item.summary}</p>
+                  <p className="mt-5 max-w-lg text-lg leading-8 text-muted-foreground">{item.summary}</p>
                 </div>
               </Link>
             ))}
