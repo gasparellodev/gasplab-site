@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import {
   Bot,
   Check,
@@ -11,17 +11,42 @@ import {
   Sparkles,
   Workflow,
 } from "lucide-react";
+import { method } from "@/lib/content";
+
+const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+function subscribeReducedMotion(onChange: () => void) {
+  const query = window.matchMedia(REDUCED_MOTION_QUERY);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+}
+function getReducedMotionSnapshot() {
+  return window.matchMedia(REDUCED_MOTION_QUERY).matches;
+}
+function getReducedMotionServerSnapshot() {
+  return false;
+}
+
+/** true quando o usuário pediu menos movimento — desliga intervalos e parallax. */
+function usePrefersReducedMotion() {
+  return useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot,
+  );
+}
 
 export function ArchitectureFlow() {
   const [stage, setStage] = useState(0);
   const wrap = useRef<HTMLDivElement>(null);
+  const reducedMotion = usePrefersReducedMotion();
   useEffect(() => {
+    if (reducedMotion) return;
     const id = setInterval(() => setStage((v) => (v + 1) % 5), 1800);
     return () => clearInterval(id);
-  }, []);
+  }, [reducedMotion]);
   useEffect(() => {
     const el = wrap.current;
-    if (!el) return;
+    if (!el || reducedMotion) return;
     const move = (e: PointerEvent) => {
       const r = el.getBoundingClientRect();
       el.style.setProperty("--mx", `${((e.clientX - r.left) / r.width - 0.5) * 14}px`);
@@ -29,8 +54,8 @@ export function ArchitectureFlow() {
     };
     el.addEventListener("pointermove", move);
     return () => el.removeEventListener("pointermove", move);
-  }, []);
-  const steps = ["Entender", "Mapear", "Arquitetar", "Integrar", "Evoluir"];
+  }, [reducedMotion]);
+  const steps = method.steps.map((s) => s.name);
   return (
     <div
       ref={wrap}
@@ -42,7 +67,7 @@ export function ArchitectureFlow() {
       <div className="relative z-10 flex items-center justify-between font-mono text-[10px] uppercase tracking-[.14em] text-subtle">
         <span>Architecture / live</span>
         <span className="flex items-center gap-2">
-          <i className="pulse-dot h-2 w-2 rounded-full bg-primary" />
+          <i aria-hidden="true" className="pulse-dot h-2 w-2 rounded-full bg-primary" />
           Signal online
         </span>
       </div>
@@ -64,8 +89,11 @@ export function ArchitectureFlow() {
           ))}
         </div>
         <div className="relative flex h-32 w-32 items-center justify-center rounded-full border border-primary/40 bg-deep shadow-[0_0_70px_color-mix(in_srgb,var(--glow)_20%,transparent)]">
-          <div className="absolute inset-3 animate-[spin_12s_linear_infinite] rounded-full border border-dashed border-signal/35" />
-          <Network className="h-8 w-8 text-signal" />
+          <div
+            aria-hidden="true"
+            className="absolute inset-3 animate-[spin_12s_linear_infinite] rounded-full border border-dashed border-signal/35"
+          />
+          <Network className="h-8 w-8 text-signal" aria-hidden="true" />
           <span className="absolute -bottom-7 font-mono text-[9px] uppercase tracking-wider text-signal">
             Gasp architecture
           </span>
@@ -83,8 +111,16 @@ export function ArchitectureFlow() {
       </div>
       <div className="relative z-10 mt-20 grid grid-cols-5 gap-1">
         {steps.map((x, i) => (
-          <button key={x} onClick={() => setStage(i)} className="text-left">
+          <button
+            key={x}
+            type="button"
+            onClick={() => setStage(i)}
+            aria-pressed={i === stage}
+            aria-label={`Ver etapa ${x}`}
+            className="text-left"
+          >
             <span
+              aria-hidden="true"
               className={`block h-1 rounded-full transition-all ${i <= stage ? "bg-primary" : "bg-white/10"}`}
             />
             <span
@@ -101,17 +137,19 @@ export function ArchitectureFlow() {
 
 export function OperationsCanvas() {
   const [active, setActive] = useState(0);
+  const reducedMotion = usePrefersReducedMotion();
   useEffect(() => {
+    if (reducedMotion) return;
     const id = setInterval(() => setActive((v) => (v + 1) % 3), 1800);
     return () => clearInterval(id);
-  }, []);
+  }, [reducedMotion]);
   const items = ["Contexto", "Arquitetura", "IA aplicada"];
   return (
     <div className="panel relative overflow-hidden rounded-[2rem] p-5 sm:p-7">
       <div className="mb-12 flex items-center justify-between font-mono text-[10px] uppercase tracking-[.14em] text-subtle">
         <span>GaspLab / blueprint</span>
         <span className="flex items-center gap-2">
-          <i className="pulse-dot h-2 w-2 rounded-full bg-primary" />
+          <i aria-hidden="true" className="pulse-dot h-2 w-2 rounded-full bg-primary" />
           Online
         </span>
       </div>
@@ -119,21 +157,25 @@ export function OperationsCanvas() {
         {items.map((item, i) => (
           <button
             key={item}
+            type="button"
             onClick={() => setActive(i)}
+            aria-pressed={active === i}
+            aria-label={`Ver ${item}`}
             className={`relative rounded-2xl border p-5 text-left transition-all ${active === i ? "border-primary/60 bg-primary/10" : "border-white/10 bg-black/15"}`}
           >
             <span className="font-mono text-[10px] text-subtle">0{i + 1}</span>
             <p className="mt-7 text-lg font-medium">{item}</p>
             <div
+              aria-hidden="true"
               className={`mt-4 h-1 rounded-full ${active === i ? "bg-primary" : "bg-white/10"}`}
             />
           </button>
         ))}
       </div>
       <div className="mt-3 grid grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-2xl border border-white/10 bg-background p-4">
-        <div className="h-2 rounded bg-white/10" />
-        <Sparkles size={15} className="text-signal" />
-        <div className="h-2 rounded bg-primary/70" />
+        <div aria-hidden="true" className="h-2 rounded bg-white/10" />
+        <Sparkles size={15} className="text-signal" aria-hidden="true" />
+        <div aria-hidden="true" className="h-2 rounded bg-primary/70" />
       </div>
     </div>
   );
@@ -153,11 +195,14 @@ export function ProcessLab() {
           const Icon = m.icon;
           return (
             <button
+              type="button"
               onClick={() => setMode(i)}
               key={m.label}
+              aria-pressed={mode === i}
+              aria-label={`Ver modo ${m.label}`}
               className={`border-b border-white/10 p-6 text-left transition sm:border-b-0 ${i > 0 ? "sm:border-l" : ""} ${mode === i ? "bg-primary/10" : ""}`}
             >
-              <Icon className={mode === i ? "text-signal" : "text-subtle"} />
+              <Icon className={mode === i ? "text-signal" : "text-subtle"} aria-hidden="true" />
               <p className="mt-8 font-mono text-[10px] uppercase tracking-widest text-subtle">
                 0{i + 1} / {m.label}
               </p>
@@ -166,7 +211,7 @@ export function ProcessLab() {
           );
         })}
       </div>
-      <div className="grid-bg relative min-h-56 border-t border-white/10 p-7">
+      <div className="grid-bg relative min-h-56 border-t border-white/10 p-7" aria-hidden="true">
         <div className="absolute inset-y-0 left-[20%] w-px bg-primary/30" />
         <div className="absolute inset-y-0 left-1/2 w-px bg-primary/30" />
         <div className="absolute inset-y-0 left-[80%] w-px bg-primary/30" />
@@ -184,7 +229,7 @@ export function DemoStrip({ type }: { type: "site" | "automation" | "system" }) 
   if (type === "site")
     return (
       <div className="panel rounded-[1.6rem] p-5">
-        <div className="flex gap-1.5">
+        <div className="flex gap-1.5" aria-hidden="true">
           <i className="h-2 w-2 rounded-full bg-danger" />
           <i className="h-2 w-2 rounded-full bg-warning" />
           <i className="h-2 w-2 rounded-full bg-primary" />
@@ -193,11 +238,11 @@ export function DemoStrip({ type }: { type: "site" | "automation" | "system" }) 
           <div>
             <span className="eyebrow">Narrativa</span>
             <p className="mt-3 text-2xl font-medium">Clareza que conduz à ação.</p>
-            <button className="mt-8 btn-primary px-4 py-2 text-xs">
+            <button type="button" className="mt-8 btn-primary px-4 py-2 text-xs">
               Quero avançar
             </button>
           </div>
-          <div className="grid-bg min-h-40 rounded-xl border border-white/10 p-4">
+          <div className="grid-bg min-h-40 rounded-xl border border-white/10 p-4" aria-hidden="true">
             <MousePointer2 className="ml-auto text-signal" />
           </div>
         </div>
@@ -207,7 +252,7 @@ export function DemoStrip({ type }: { type: "site" | "automation" | "system" }) 
     return (
       <div className="panel rounded-[1.6rem] p-5">
         <div className="flex items-center gap-2 text-sm">
-          <Workflow size={17} className="text-signal" /> Fluxo em execução
+          <Workflow size={17} className="text-signal" aria-hidden="true" /> Fluxo em execução
         </div>
         <div className="mt-7 grid gap-3 sm:grid-cols-3">
           {["Entrada recebida", "IA classifica", "Time supervisiona"].map((x, i) => (
@@ -215,9 +260,9 @@ export function DemoStrip({ type }: { type: "site" | "automation" | "system" }) 
               <div className="flex items-center justify-between">
                 <span className="font-mono text-[10px] text-subtle">0{i + 1}</span>
                 {i < 2 ? (
-                  <Bot size={14} className="text-primary" />
+                  <Bot size={14} className="text-primary" aria-hidden="true" />
                 ) : (
-                  <Check size={14} className="text-signal" />
+                  <Check size={14} className="text-signal" aria-hidden="true" />
                 )}
               </div>
               <p className="mt-8 text-sm">{x}</p>
@@ -237,7 +282,7 @@ export function DemoStrip({ type }: { type: "site" | "automation" | "system" }) 
       <div className="mt-7 grid grid-cols-2 gap-3">
         <div className="rounded-xl border border-white/10 p-5">
           <p className="font-mono text-[10px] text-subtle">PROCESSOS</p>
-          <p className="mt-4 text-3xl">24</p>
+          <p className="mt-4 text-3xl">Mapeados</p>
         </div>
         <div className="rounded-xl border border-white/10 p-5">
           <p className="font-mono text-[10px] text-subtle">STATUS</p>

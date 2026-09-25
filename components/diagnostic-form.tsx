@@ -1,5 +1,5 @@
 "use client";
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { ArrowRight, CalendarDays, CheckCircle2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -12,6 +12,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { TrackedLink } from "@/components/sections/tracked-link";
+import { track } from "@/lib/analytics";
 import { whatsappUrl } from "@/lib/content";
 import { diagnosticInterests, normalizeInterest } from "@/lib/diagnostic";
 
@@ -29,6 +31,12 @@ export function DiagnosticForm() {
   const [state, setState] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState(DEFAULT_ERROR_MESSAGE);
   const [startedAt] = useState(() => Date.now());
+  const hasTrackedStart = useRef(false);
+  function handleFirstFocus() {
+    if (hasTrackedStart.current) return;
+    hasTrackedStart.current = true;
+    track("diagnostic_start");
+  }
   const calUrl = process.env.NEXT_PUBLIC_CAL_URL;
   const utms = useMemo(
     () => ({
@@ -56,6 +64,7 @@ export function DiagnosticForm() {
         setState("error");
         return;
       }
+      track("diagnostic_submit", { interest });
       setState("success");
     } catch {
       setErrorMessage(DEFAULT_ERROR_MESSAGE);
@@ -65,16 +74,16 @@ export function DiagnosticForm() {
   if (state === "success")
     return (
       <div className="panel rounded-[2rem] p-8 sm:p-12" aria-live="polite">
-        <CheckCircle2 className="h-10 w-10 text-signal" />
+        <CheckCircle2 className="h-10 w-10 text-signal" aria-hidden="true" />
         <h2 className="mt-8 text-4xl font-semibold tracking-tight">Contexto recebido.</h2>
         <p className="mt-5 max-w-xl leading-7 text-muted-foreground">
           Obrigado. Seu diagnóstico entrou na fila inicial da GaspLab. Escolha o próximo passo:
         </p>
         {calUrl ? (
           <>
-            <a target="_blank" rel="noreferrer" href={calUrl} className="mt-8 btn-primary">
-              <CalendarDays size={17} /> Abrir agenda
-            </a>
+            <TrackedLink href={calUrl} event="schedule_click" className="mt-8 btn-primary">
+              <CalendarDays size={17} aria-hidden="true" /> Abrir agenda
+            </TrackedLink>
             <iframe
               title="Agenda GaspLab"
               src={calUrl}
@@ -82,14 +91,19 @@ export function DiagnosticForm() {
             />
           </>
         ) : (
-          <a href={whatsappUrl} className="mt-8 btn-primary">
-            Continuar no WhatsApp <ArrowRight size={17} />
-          </a>
+          <TrackedLink
+            href={whatsappUrl}
+            event="whatsapp_click"
+            eventProps={{ origem: "diagnostico_sucesso" }}
+            className="mt-8 btn-primary"
+          >
+            Continuar no WhatsApp <ArrowRight size={17} aria-hidden="true" />
+          </TrackedLink>
         )}
       </div>
     );
   return (
-    <form onSubmit={submit} className="panel rounded-[2rem] p-6 sm:p-10">
+    <form onSubmit={submit} onFocus={handleFirstFocus} className="panel rounded-[2rem] p-6 sm:p-10">
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Nome">
           <Input
@@ -169,21 +183,23 @@ export function DiagnosticForm() {
       {state === "error" && (
         <div role="alert" className="mt-5 text-sm text-danger">
           <p>{errorMessage}</p>
-          <a
+          <TrackedLink
             href={whatsappUrl}
-            target="_blank"
-            rel="noreferrer"
+            event="whatsapp_click"
+            eventProps={{ origem: "diagnostico_erro" }}
             className="mt-2 inline-flex items-center gap-1.5 text-primary underline underline-offset-4"
           >
-            Falar no WhatsApp <ArrowRight size={14} />
-          </a>
+            Falar no WhatsApp <ArrowRight size={14} aria-hidden="true" />
+          </TrackedLink>
         </div>
       )}
       <button
+        type="submit"
         disabled={state === "sending" || !consent || !interest}
         className="mt-8 btn-primary disabled:cursor-not-allowed disabled:opacity-50"
       >
-        {state === "sending" ? "Enviando…" : "Enviar diagnóstico"} <ArrowRight size={17} />
+        {state === "sending" ? "Enviando…" : "Enviar diagnóstico"}{" "}
+        <ArrowRight size={17} aria-hidden="true" />
       </button>
     </form>
   );

@@ -12,6 +12,7 @@ export default function Cases() {
       <section className="grid-bg px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto max-w-[1440px]">
           <SectionHead
+            level={1}
             eyebrow="Cases e produtos"
             title="Tecnologia aplicada a problemas que pedem movimento."
             body="Os resultados publicados aqui respeitam uma regra simples: só entram quando existe evidência verificável."
@@ -25,7 +26,7 @@ export default function Cases() {
               >
                 <div className="flex justify-between">
                   <span className="eyebrow">{item.kind}</span>
-                  <ArrowUpRight className="text-subtle group-hover:text-signal" />
+                  <ArrowUpRight className="text-subtle group-hover:text-signal" aria-hidden="true" />
                 </div>
                 <div className="mt-36">
                   <span className="font-mono text-xs text-subtle">0{i + 1}</span>

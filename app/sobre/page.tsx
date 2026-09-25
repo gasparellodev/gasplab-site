@@ -2,18 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageShell } from "@/components/site-shell";
-import { clientBrands } from "@/lib/content";
+import { GaspLabClients } from "@/components/sections/gasplab-clients";
+import { Trajectory } from "@/components/sections/trajectory";
+import { founder } from "@/lib/content";
+
 export const metadata = {
   title: "Sobre",
   description: "A visão, o método e a liderança técnica por trás da GaspLab.",
 };
-const timeline = [
-  "2017 · Desenvolvimento de sistemas e operações digitais",
-  "2021 · Produtos full stack e experiências conectadas",
-  "2022 · Liderança técnica, arquitetura e integrações",
-  "2024 · Engenharia em produtos de grande audiência",
-  "2025 · IA aplicada, automações e evolução da GaspLab",
-];
+
 export default function About() {
   return (
     <PageShell>
@@ -45,65 +42,63 @@ export default function About() {
                 src="/vinicius-gasparello.jpg"
                 width={640}
                 height={640}
-                alt="Vinícius Gasparello"
+                sizes="(min-width: 1024px) 32vw, 90vw"
+                alt="Retrato de Vinícius Gasparello"
                 className="aspect-[4/5] w-full object-cover"
               />
             </div>
             <p className="eyebrow mt-8">Fundador e liderança técnica</p>
           </div>
           <div>
-            <h2 className="title">Vinícius Gasparello</h2>
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-muted-foreground">
-              Engenheiro de software e IA com nove anos de experiência em arquitetura escalável,
-              produtos digitais, automação e liderança técnica. Criou a GaspLab para transformar
-              conhecimento técnico em uma forma mais cuidadosa de introduzir inteligência dentro das
-              empresas.
-            </p>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">
-              A convicção é simples: antes de escolher uma ferramenta, precisamos compreender as
-              pessoas, os dados, as decisões e as exceções que fazem o negócio funcionar.
-            </p>
-            <div className="mt-12 border-l border-primary/35 pl-7">
-              {timeline.map((x, i) => (
-                <p
-                  key={x}
-                  className={`py-4 text-soft ${i < timeline.length - 1 ? "border-b border-white/10" : ""}`}
+            <h2 className="title">{founder.name}</h2>
+            <p className="mt-4 text-lg leading-7 text-soft">{founder.role}</p>
+            {founder.longBio.map((paragraph) => (
+              <p key={paragraph} className="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">
+                {paragraph}
+              </p>
+            ))}
+            <blockquote className="mt-8 max-w-3xl border-l-2 border-primary/40 pl-6 text-xl leading-9 text-soft">
+              “{founder.quote}”
+            </blockquote>
+            <div className="mt-8 flex flex-wrap gap-3">
+              {founder.highlights.map((highlight) => (
+                <span
+                  key={highlight}
+                  className="rounded-full border border-primary/20 px-4 py-1.5 font-mono text-xs text-soft"
                 >
-                  {x}
-                </p>
+                  {highlight}
+                </span>
+              ))}
+            </div>
+            <div className="mt-12 border-l border-primary/35 pl-7">
+              {founder.timeline.map((entry, i) => (
+                <div
+                  key={entry.company}
+                  className={`py-4 ${i < founder.timeline.length - 1 ? "border-b border-white/10" : ""}`}
+                >
+                  <p className="font-mono text-[10px] uppercase tracking-widest text-subtle">
+                    {entry.period}
+                  </p>
+                  <p className="mt-1 text-soft">
+                    <span className="font-medium text-white">{entry.company}</span> — {entry.role}
+                  </p>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </section>
-      <section className="px-5 py-24 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-[1440px]">
-          <p className="eyebrow">Clientes e projetos</p>
-          <h2 className="title mt-6 max-w-4xl">
-            Experiência construída dentro de operações reais.
-          </h2>
-          <div className="mt-12 grid grid-cols-2 border-l border-t border-primary/15 md:grid-cols-4">
-            {clientBrands.map((x) => (
-              <div
-                className="flex min-h-32 items-center border-b border-r border-primary/15 p-5 text-lg font-semibold text-soft"
-                key={x}
-              >
-                {x}
-              </div>
-            ))}
-          </div>
-          <p className="mt-5 max-w-3xl text-sm leading-6 text-subtle">
-            A seleção reúne clientes, projetos de prestação de serviço, parcerias e organizações da
-            trajetória profissional de Vinícius. Cada case detalhado identifica o escopo e a
-            natureza da participação.
-          </p>
-          <Link
-            href="/diagnostico"
-            className="mt-10 inline-flex items-center gap-2 font-semibold text-signal"
-          >
-            Levar essa experiência para seu desafio <ArrowRight size={17} />
-          </Link>
-        </div>
+
+      <GaspLabClients />
+      <Trajectory />
+
+      <section className="px-5 py-24 text-center sm:px-8 lg:px-12">
+        <Link
+          href="/diagnostico"
+          className="inline-flex items-center gap-2 font-semibold text-signal"
+        >
+          Levar essa experiência para seu desafio <ArrowRight size={17} aria-hidden="true" />
+        </Link>
       </section>
     </PageShell>
   );
