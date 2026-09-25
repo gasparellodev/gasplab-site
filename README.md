@@ -60,3 +60,29 @@ O schema fica em `db/schema.ts` (tabela `diagnostics`) e as migrações versiona
 4. Rode `npm run db:migrate` (localmente, apontando para o `DATABASE_URL` de produção, ou via um
    passo de deploy) antes do primeiro acesso ao formulário de diagnóstico.
 5. Domínio de produção: **gasplab.site**.
+
+## Publicação — primeira vez (checklist)
+
+Precisa de login humano nas contas da GaspLab. Nenhuma credencial fica no repositório.
+
+1. **GitHub (conta vinygasparello)**
+   ```bash
+   gh auth login --hostname github.com --git-protocol https --web
+   gh repo create gasplab-site --private --source . --remote origin
+   gh auth setup-git
+   git push -u origin main
+   ```
+   Se esta máquina também usa outra conta do GitHub, volte para ela depois com `gh auth switch`.
+2. **Vercel:** *Add New → Project → Import* `gasplab-site` (preset Next.js detectado automaticamente).
+   Cada push na `main` passa a publicar sozinho.
+3. **Banco:** *Storage → Neon → Connect* ao projeto. Depois, localmente com o `DATABASE_URL` de
+   produção em `.env.local`: `npm run db:migrate`. Até isso acontecer, o formulário mostra o
+   fallback para WhatsApp.
+4. **Domínio:** em *Settings → Domains*, adicione `gasplab.site` e `www.gasplab.site`. Na Hostinger
+   (*Domínios → gasplab.site → DNS*), crie exatamente os registros que a Vercel mostrar —
+   normalmente `A @ 76.76.21.21` e `CNAME www cname.vercel-dns.com` — e remova registros `A`/`CNAME`
+   antigos de `@` e `www`. O SSL é emitido pela Vercel após a propagação.
+5. **Opcional:** `NEXT_PUBLIC_CAL_URL` (quando houver Cal.com) e as variáveis do Resend para
+   receber e-mail a cada diagnóstico.
+6. **Conferir:** abrir https://gasplab.site, enviar um diagnóstico de teste e verificar a linha na
+   tabela `diagnostics` do Neon.
