@@ -40,7 +40,7 @@ Classificações: **pública** · **comprovada** · **declarada pelo fundador** 
 | GIS — Tech Lead, fev/2022–mai/2023 | pública | LinkedIn |
 | digital.code — Full Stack, ago/2021–ago/2022 (projetos RAM, Fiat, Jeep) | pública | LinkedIn |
 | Genpro — Analista de Sistemas, abr/2017–abr/2021 | pública | LinkedIn |
-| Foto 640×640 do Instagram público | pública | Instagram; substituir por original em alta |
+| Foto do Instagram público (480×640), ampliada 4× para 1920×2560 com upscale fiel (Magnific Precision, sem alteração criativa) em 29/09/2026 — `public/vinicius-gasparello-hd.jpg` | pública | Instagram; ainda vale substituir por original em alta resolução |
 
 ## Marcas — classificação aprovada (decisão 25/09/2026)
 

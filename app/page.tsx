@@ -175,11 +175,12 @@ export default function Home() {
         <div className="mx-auto grid max-w-[1440px] items-center gap-14 lg:grid-cols-[.85fr_1.15fr]">
           <div className="relative overflow-hidden rounded-[2rem]">
             <Image
-              src="/vinicius-gasparello.jpg"
-              width={640}
-              height={640}
+              src="/vinicius-gasparello-hd.jpg"
+              width={1920}
+              height={2560}
               sizes="(min-width: 1024px) 40vw, 90vw"
               alt="Retrato de Vinícius Gasparello, fundador da GaspLab"
+              quality={90}
               className="aspect-[4/5] w-full object-cover"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep/55 via-transparent to-transparent" />

@@ -39,11 +39,12 @@ export default function About() {
           <div>
             <div className="relative overflow-hidden rounded-[2rem]">
               <Image
-                src="/vinicius-gasparello.jpg"
-                width={640}
-                height={640}
+                src="/vinicius-gasparello-hd.jpg"
+                width={1920}
+                height={2560}
                 sizes="(min-width: 1024px) 32vw, 90vw"
                 alt="Retrato de Vinícius Gasparello"
+                quality={90}
                 className="aspect-[4/5] w-full object-cover"
               />
             </div>
