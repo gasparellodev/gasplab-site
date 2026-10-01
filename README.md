@@ -10,6 +10,37 @@ TypeScript + Tailwind 4, com formulário de diagnóstico gravando em Postgres (N
 - **Banco:** Postgres (Neon), acesso via Drizzle ORM (`drizzle-orm/neon-http`)
 - **Hospedagem:** Vercel
 
+## GaspLab Operacao
+
+A area protegida em `/operacao` concentra prospeccao, CRM, tarefas, previews,
+conversas e o assistente Gaspar. Ela usa um projeto Supabase separado para
+autenticacao e dados operacionais; o Neon continua atendendo somente o formulario
+publico de diagnostico.
+
+### Preparacao local
+
+1. Copie `.env.example` para `.env.local` e configure as tres variaveis do Supabase.
+2. Inicie o Supabase local com `npm run supabase:start` ou vincule um projeto de
+   desenvolvimento com a CLI oficial.
+3. Aplique as migrations com `npx supabase db push` no projeto vinculado, ou use
+   `npm run supabase:reset` no ambiente local.
+4. Antes do primeiro reset local, ajuste o e-mail de Vinicius em `supabase/seed.sql`.
+   O primeiro login com esse e-mail reivindica o convite de administrador.
+5. Rode `npm run dev`, acesse `http://localhost:3000/login` e, em Configuracoes,
+   convide Gabriel com o papel `member`. Nao existe cadastro publico.
+
+No projeto hospedado, adicione a URL publica de `/auth/callback` e
+`/auth/update-password` a lista de redirects permitidos do Supabase Auth.
+
+Places, WhatsApp e Gaspar sao opcionais durante o piloto. Sem suas credenciais,
+as telas exibem o estado desconectado e o CRM permanece utilizavel. Nunca use a
+`SUPABASE_SERVICE_ROLE_KEY` em variaveis publicas ou no navegador.
+
+O MCP do Supabase deve ser conectado somente ao projeto de desenvolvimento,
+preferencialmente com `project_ref`, `read_only=true` e apenas os grupos de
+ferramentas necessarios. Ele e uma ferramenta interna de desenvolvimento e nao
+faz parte das capacidades do Gaspar.
+
 ## Scripts
 
 ```bash
@@ -17,8 +48,12 @@ npm run dev          # ambiente de desenvolvimento (next dev)
 npm run build         # build de produção (next build)
 npm run start          # serve o build de produção (next start)
 npm run lint            # eslint .
+npm run typecheck       # verifica TypeScript sem gerar arquivos
+npm run test            # testes automatizados do modulo operacional
 npm run db:generate # gera SQL de migração a partir de db/schema.ts
 npm run db:migrate  # aplica as migrações pendentes em DATABASE_URL
+npm run supabase:start  # inicia o Supabase local
+npm run supabase:reset  # reaplica migrations e seed locais
 ```
 
 ## Variáveis de ambiente
