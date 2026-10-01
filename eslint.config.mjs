@@ -12,6 +12,13 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Framework de agentes e base de conhecimento: não fazem parte do site.
+    ".aiox-core/**",
+    ".aiox/**",
+    ".claude/**",
+    "squads/**",
+    "knowledge/**",
+    "brand/**",
   ]),
   {
     files: ["components/ui/**/*.{ts,tsx}", "hooks/use-mobile.ts"],

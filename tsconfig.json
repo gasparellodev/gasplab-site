@@ -40,6 +40,12 @@
     "**/*.mts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    ".aiox-core",
+    ".aiox",
+    "squads",
+    "knowledge",
+    ".claude",
+    "brand"
   ]
 }

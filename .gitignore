@@ -40,3 +40,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Framework AIOX: dependências locais
+.aiox-core/node_modules/
+.aiox/

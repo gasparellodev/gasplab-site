@@ -5,3 +5,7 @@ PLANO_*.md
 .claude/
 .env*
 !.env.example
+.aiox-core/
+.aiox/
+squads/
+knowledge/
