@@ -4,6 +4,7 @@ Este repositório é **exclusivamente da GaspLab** (site gasplab.site + operaç�
 
 ## Separação de bases (regra dura)
 - **Nunca** usar, citar ou misturar dados da Ice Company, Decora, Sinolli, Cold Trek ou qualquer outro negócio do Felipe. Esses contextos vivem em outros projetos.
+- **Exceção (decidida pelo Felipe em 14/10/2026):** a Ice Company pode ser citada **apenas como cliente da GaspLab** (nome em lista de clientes/cases). Nada de dados operacionais dela (loja, produtos, fotos, campanhas, Bling/Shopify/Yampi), que vivem em `Projetos\Teste Ice`.
 - Fonte de conhecimento da GaspLab: `knowledge/` (negócio, produto, mercado, oferta, aquisição, scripts, técnico, métricas, riscos) e `docs/` (marca e site).
 - Se faltar um dado, registre como pendência em `knowledge/99-pendencias.md` — nunca invente números, clientes, depoimentos ou resultados.
 

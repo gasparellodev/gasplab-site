@@ -1,6 +1,6 @@
 # Base de conhecimento — GaspLab (operação comercial)
 
-Somente GaspLab. Nada de Ice Company ou outros negócios.
+Somente GaspLab. Nada de Ice Company ou outros negócios (exceção: a Ice Company pode aparecer só como cliente da GaspLab; ver `CLAUDE.md`).
 
 | Pasta | Conteúdo | Dono (agente) |
 |---|---|---|
