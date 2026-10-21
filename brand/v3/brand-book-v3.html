@@ -1,0 +1,952 @@
+<title>Brand Book GaspLab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap">
+<style>
+/* Layout: o brand book já vestido de Uniforme. Fundo cinza de tênis, títulos em serifa, etiquetas em mono; as peças aparecem como pranchas em proporção real, reduzidas para caber na coluna. */
+:root{
+  --bg:#E2E3E1;
+  --surface:#F4F4F2;
+  --ink:#141416;
+  --ink-2:#4D5056;
+  --rule:#C2C4C1;
+  --accent:#1F2D52;
+  --stitch:#A96A28;
+  --flag:#7A4A12;
+  --flag-bg:#EFDFC8;
+  --serif:"Hedvig Letters Serif",Georgia,"Times New Roman",serif;
+  --sans:"Hanken Grotesk","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"Martian Mono",ui-monospace,"Cascadia Mono",Menlo,monospace;
+  --gap:clamp(1rem,2.4vw,1.75rem);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#121318;--surface:#1A1D26;--ink:#E9EAE7;--ink-2:#A9ADB5;--rule:#2C303B;--accent:#9DB2DE;--stitch:#C8883B;--flag:#F0C27E;--flag-bg:#2E2414;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#121318;--surface:#1A1D26;--ink:#E9EAE7;--ink-2:#A9ADB5;--rule:#2C303B;--accent:#9DB2DE;--stitch:#C8883B;--flag:#F0C27E;--flag-bg:#2E2414;color-scheme:dark}
+
+*,*::before,*::after{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{width:100%;max-width:1212px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.prose{max-width:66ch}
+h1,h2,h3,h4{margin:0;font-weight:400;text-wrap:balance}
+p,ul,ol{margin:0}
+a{color:var(--accent);text-decoration-color:var(--stitch);text-underline-offset:.2em}
+:focus-visible{outline:2px solid var(--stitch);outline-offset:3px}
+.mono{font-family:var(--mono);font-stretch:87.5%;letter-spacing:.07em;text-transform:uppercase}
+.flag{justify-self:start;display:inline-block;font-family:var(--mono);font-stretch:87.5%;font-size:.7rem;line-height:1.4;letter-spacing:.05em;text-transform:uppercase;color:var(--flag);background:var(--flag-bg);padding:.2rem .5rem}
+
+/* Abertura */
+.top{padding-block:clamp(2rem,6vw,4rem) 2rem;border-bottom:1px solid var(--rule)}
+.top-in{display:grid;gap:1.25rem}
+.brandline{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem}
+.brandline .lockup{display:inline-flex;align-items:center;gap:.5rem;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
+.brandline svg{width:28px;height:28px}
+.brandline .sq{fill:var(--stitch)}
+.brandline .mono{font-size:.72rem;color:var(--ink-2)}
+.top h1{font-family:var(--serif);font-size:clamp(2.5rem,6.4vw,4.4rem);line-height:1.03;letter-spacing:-.015em}
+.lede{font-size:1.2rem;line-height:1.5}
+.toc{display:flex;flex-wrap:wrap;gap:.45rem 1.2rem;font-size:.85rem;padding-top:.4rem}
+.toc a{color:var(--ink-2);text-decoration:none;border-bottom:1px dashed var(--stitch);padding-bottom:.1rem}
+.toc a:hover{color:var(--ink)}
+
+/* Seções */
+.sec{padding-block:clamp(2.5rem,6vw,4.5rem);border-bottom:1px solid var(--rule)}
+.sec-head{display:grid;gap:.7rem;margin-bottom:clamp(1.5rem,3vw,2.25rem)}
+.sec-head h2{font-family:var(--serif);font-size:clamp(2rem,3.8vw,2.75rem);line-height:1.06;letter-spacing:-.01em}
+.sec-head p{color:var(--ink-2);max-width:68ch}
+.sub-h{font-family:var(--mono);font-stretch:87.5%;font-size:.74rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:2.4rem 0 1rem}
+.sub-h:first-of-type{margin-top:0}
+
+/* Peças */
+.piece{display:grid;gap:1.1rem;padding-block:clamp(2rem,4vw,3rem);border-top:1px solid var(--rule)}
+.piece:first-of-type{border-top:0;padding-top:0}
+.piece-head{display:grid;grid-template-columns:minmax(0,12rem) minmax(0,1fr);gap:.35rem var(--gap);align-items:baseline}
+.piece-n{font-family:var(--mono);font-stretch:87.5%;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.piece-head h3{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2rem);line-height:1.1}
+.piece-head p{grid-column:2;color:var(--ink-2);max-width:70ch}
+.row{display:grid;gap:var(--gap);align-items:start}
+.row-site{grid-template-columns:minmax(0,3.1fr) minmax(0,1fr)}
+.row-ig{grid-template-columns:minmax(0,1.42fr) minmax(0,1fr)}
+.row-prop{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.row-pv{grid-template-columns:minmax(0,1fr)}
+.fig{margin:0;display:grid;gap:.5rem;min-width:0}
+.fig figcaption{font-family:var(--mono);font-stretch:87.5%;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.browser{border:1px solid var(--rule);background:var(--surface)}
+.browser-bar{display:flex;align-items:center;gap:.55rem;padding:.45rem .75rem;border-bottom:1px solid var(--rule);font-family:var(--mono);font-stretch:87.5%;font-size:.68rem;color:var(--ink-2)}
+.browser-bar::before{content:"";width:.55rem;height:.55rem;background:var(--stitch);flex:none}
+.phone{border:7px solid #141416;border-radius:26px;overflow:hidden;background:#141416;width:100%;max-width:300px}
+.notes{display:grid;gap:.6rem;padding-left:1.1rem;color:var(--ink-2);max-width:56ch}
+.replay{justify-self:start;font:inherit;font-size:.86rem;font-weight:700;cursor:pointer;background:transparent;color:var(--ink);border:1.5px solid var(--ink);padding:.45rem .95rem}
+.replay:hover{background:var(--ink);color:var(--bg)}
+
+/* Pranchas: paleta fixa, medidas em em (1em = 1% da largura da prancha) */
+.ab{--tee:#141416;--raw:#1F2D52;--wash:#5A76A8;--sneaker:#E2E3E1;--sole:#F4F4F2;--silver:#A8AEB6;--cu:#A96A28;--cu-l:#C8883B;--muted:#4D5056;position:relative;width:100%;container-type:inline-size;overflow:hidden;background:var(--sneaker);color:var(--tee)}
+.ab-in{position:absolute;inset:0;font-size:1cqw;font-family:var(--sans);line-height:1.35}
+.ab p{margin:0}
+.ab .logo{display:inline-flex;align-items:center;gap:.35em;font-weight:800;letter-spacing:-.02em;line-height:1}
+.ab .logo svg{width:1.2em;height:1.2em;flex:none}
+.ab .logo .sq{fill:var(--cu)}
+.ab .logo.light{color:var(--sole)}
+.ab .logo.light .sq{fill:var(--cu-l)}
+.duo{position:relative;overflow:hidden;background:var(--raw,#1F2D52)}
+.duo img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.12) brightness(1.08);mix-blend-mode:screen;opacity:.95}
+.stitch{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.stitch rect,.stitch line,.stitch path{fill:none;stroke:var(--cu-l,#C8883B);stroke-width:2;stroke-dasharray:7 5}
+.stitch.on-light rect,.stitch.on-light line,.stitch.on-light path{stroke:var(--cu,#A96A28)}
+
+/* Etiqueta de amostra */
+.tag-card{position:relative;display:grid;gap:.75em;width:max-content;max-width:100%;background:var(--sole);color:var(--tee);border:.1em solid var(--tee);padding:1.2em 2.6em 1.2em 1.3em}
+.tag-card::after{content:"";position:absolute;top:.75em;right:.75em;width:.8em;height:.8em;background:var(--cu)}
+.tags{display:flex;flex-wrap:wrap;gap:.4em}
+.tags span{font-family:var(--mono);font-stretch:87.5%;font-size:.78em;line-height:1.2;letter-spacing:.06em;text-transform:uppercase;border:.1em solid currentColor;padding:.28em .55em}
+.tags .ver{background:var(--raw);border-color:var(--raw);color:var(--sole);text-transform:none;font-variant-numeric:tabular-nums;min-width:4.6em;text-align:center}
+.tests{list-style:none;margin:0;padding:0;display:grid;gap:.45em;font-family:var(--mono);font-stretch:87.5%;font-size:.8em}
+.tests li{display:flex;gap:.6em;align-items:center}
+.tests li::before{content:"";width:.95em;height:.95em;border:.12em solid var(--tee);flex:none;transition:background-color .2s,border-color .2s}
+.tests li.ok::before{background:var(--cu);border-color:var(--cu)}
+.tag-by{font-size:.78em;color:var(--muted)}
+
+/* Traço fino */
+.fl .ink path,.fl .ink circle{fill:none;stroke:#141416;stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}
+.fl .dots circle{fill:#141416}
+.fl.light .ink path,.fl.light .ink circle{stroke:#E2E3E1}
+.fl.light .dots circle{fill:#E2E3E1}
+.fl.draw .ink path,.fl.draw .ink circle{animation:fl-draw 1.6s ease-out both}
+.fl.draw .dots{animation:fl-fade .9s 1.1s both}
+@keyframes fl-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes fl-fade{from{opacity:0}to{opacity:1}}
+@keyframes march{to{stroke-dashoffset:-120}}
+
+/* Peça 1: topo do site, desktop */
+.hero{display:grid;grid-template-rows:auto minmax(0,1fr) auto;row-gap:2em;padding:2.8em 4.5em 2.4em}
+.hero-nav{display:flex;align-items:center;gap:2.4em}
+.hero-nav .logo{font-size:1.9em}
+.hero-nav .menu{display:flex;gap:2.2em;margin-left:auto;font-size:1.15em;font-weight:500}
+.hero-nav .cta-o{font-size:1.1em;font-weight:700;border:.12em solid var(--tee);padding:.6em 1.05em}
+.hero-main{display:grid;grid-template-columns:minmax(0,1fr) 33em;gap:5em;align-items:center}
+.hero-eyebrow{font-family:var(--mono);font-stretch:87.5%;font-size:.95em;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hero-h{font-family:var(--serif);font-size:5.3em;line-height:1.02;letter-spacing:-.012em;margin:.32em 0}
+.hero-sub{font-size:1.38em;line-height:1.45;max-width:29em}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:1.4em;align-items:center;margin-top:2em}
+.btn{font-size:1.22em;font-weight:700;padding:.85em 1.35em;background:var(--raw);color:var(--sole)}
+.lnk{font-size:1.15em;font-weight:600;text-decoration:underline;text-decoration-color:var(--cu);text-decoration-thickness:.14em;text-underline-offset:.3em}
+.hero-note{font-size:1em;color:var(--muted);margin-top:1.3em}
+.hero-photo{position:relative;width:33em;aspect-ratio:4/5;justify-self:end}
+.hero-photo .duo{position:absolute;inset:0}
+.hero-photo .tag-card{position:absolute;left:-7em;bottom:3em;transform:rotate(-1.5deg);font-size:1.05em}
+.hero-levels{display:flex;flex-wrap:wrap;gap:1em 3.2em;border-top:.1em solid #C2C4C1;padding-top:1.1em;font-size:1em}
+.hero-levels b{font-family:var(--mono);font-stretch:87.5%;font-weight:600;font-size:.85em;letter-spacing:.06em;text-transform:uppercase;margin-right:.6em}
+
+/* Peça 1: topo do site, celular */
+.mhero{display:flex;flex-direction:column;gap:3.6em;padding:6em 6em 0}
+.m-nav{display:flex;justify-content:space-between;align-items:center}
+.m-nav .logo{font-size:5.2em}
+.m-menu{display:grid;gap:1.6em;width:7em}
+.m-menu i{display:block;height:.7em;background:var(--tee)}
+.m-eyebrow{font-family:var(--mono);font-stretch:87.5%;font-size:2.9em;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:1.4em}
+.m-h{font-family:var(--serif);font-size:10.4em;line-height:1.03;letter-spacing:-.01em}
+.m-sub{font-size:4.2em;line-height:1.4}
+.m-btn{font-size:4.3em;font-weight:700;background:var(--raw);color:var(--sole);padding:.85em 1em;text-align:center}
+.m-lnk{font-size:3.9em;font-weight:600;text-decoration:underline;text-decoration-color:var(--cu);text-underline-offset:.3em;text-align:center}
+.m-photo{flex:1;min-height:0;margin:0 -6em;position:relative}
+.m-photo .duo{position:absolute;inset:0}
+.m-photo .tag-card{position:absolute;left:6em;bottom:6em;font-size:3.5em;transform:rotate(-1.5deg)}
+
+/* Peça 2: post e story */
+.post-in{display:grid;grid-template-rows:62% 38%;background:var(--sole)}
+.post-photo{position:relative}
+.post-photo .duo{position:absolute;inset:0}
+.post-text{padding:5.5em 6em 4.5em;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:2em}
+.post-h{font-family:var(--serif);font-size:7.4em;line-height:1.04;letter-spacing:-.01em}
+.post-foot{display:flex;justify-content:space-between;align-items:center}
+.post-foot .logo{font-size:3.4em}
+.post-handle{font-family:var(--mono);font-stretch:87.5%;font-size:2.4em;letter-spacing:.04em}
+.story-in{background:var(--raw);color:var(--sole);display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;gap:5em;padding:9em 7em 8em;justify-items:center}
+.st-top{justify-self:start;font-family:var(--mono);font-stretch:87.5%;font-size:3em;letter-spacing:.08em;text-transform:uppercase;color:var(--silver)}
+.st-stage{position:relative;width:100%;height:100%;display:grid;place-items:center}
+.st-phone{height:100%;aspect-ratio:9/19;border:1.6em solid var(--tee);border-radius:7em;overflow:hidden}
+.st-phone .rest{font-size:2.6em}
+.st-stage .tag-card{position:absolute;left:1em;bottom:8em;font-size:3.3em;transform:rotate(-1.5deg)}
+.st-h{font-family:var(--serif);font-size:7.6em;line-height:1.04;letter-spacing:-.01em;text-align:center}
+.st-cta{font-size:3.6em;font-weight:700;background:var(--sneaker);color:var(--tee);padding:.7em 1.4em;border-radius:5em}
+
+/* Restaurante fictício: identidade do cliente, separada da GaspLab */
+.rest{--r1:#7A1F2B;--r2:#E0A526;--r3:#FBF3E4;height:100%;display:flex;flex-direction:column;background:var(--r3);color:#2A1A16;font-family:Georgia,"Times New Roman",serif}
+.rest-hero{background:var(--r1);color:var(--r3);padding:2.4em 1.4em 1.6em;display:grid;gap:.45em}
+.rest-name{font-size:2.1em;line-height:1.05;font-style:italic}
+.rest-tag{font-family:var(--sans);font-size:.85em;opacity:.85}
+.rest-menu{list-style:none;margin:0;padding:1.2em 1.4em;display:grid;gap:.9em}
+.rest-menu li{display:flex;justify-content:space-between;gap:1em;border-bottom:.08em dotted #C9B8A6;padding-bottom:.6em}
+.rest-menu b{font-family:var(--sans);font-weight:700;color:var(--r1)}
+.rest-btn{margin:auto 1.4em 1.6em;background:var(--r2);color:#2A1A16;font-family:var(--sans);font-weight:700;text-align:center;padding:.8em;font-size:.95em}
+
+/* Peça 3: capa de proposta */
+.prop-in{background:var(--sole);display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;padding:7em 8em 0 13em}
+.prop-in .stitch line{stroke:var(--cu)}
+.prop-top{display:flex;justify-content:space-between;align-items:flex-start;gap:2em}
+.prop-top .logo{font-size:3.6em}
+.prop-top .tags{font-size:2.2em}
+.prop-mid{align-self:center;display:grid;gap:2.4em;padding-block:4em}
+.prop-for{display:grid;gap:.4em;font-size:2.4em}
+.prop-for span{font-family:var(--mono);font-stretch:87.5%;font-size:.7em;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.prop-h{font-family:var(--serif);font-size:7.6em;line-height:1.04;letter-spacing:-.01em}
+.prop-sub{font-size:2.6em;color:var(--muted)}
+.prop-bot{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:5em;align-items:end;padding-bottom:5em;font-size:2.2em}
+.prop-bot div{display:grid;gap:.3em}
+.prop-bot .lbl{font-family:var(--mono);font-stretch:87.5%;font-size:.72em;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.prop-bot .fl{justify-self:end;width:5.5em;height:auto}
+.prop-band{margin:0 -8em 0 -13em;background:var(--raw);color:var(--sole);display:flex;justify-content:space-between;gap:2em;padding:3.2em 8em 3.2em 13em;font-size:2.2em}
+.prop-band span:last-child{color:var(--silver)}
+
+/* Peça 4: moldura da prévia e cartão do WhatsApp */
+.pv-in{display:grid;grid-template-rows:auto minmax(0,1fr)}
+.pv-bar{display:flex;align-items:center;gap:1.3em;background:var(--raw);color:var(--sole);padding:1.15em 2.4em}
+.pv-bar svg{width:1.8em;height:1.8em;flex:none;color:var(--sole)}
+.pv-bar .sq{fill:var(--cu-l)}
+.pv-by{font-weight:700;font-size:1.15em}
+.pv-bar .tags{font-size:1em}
+.pv-bar .tags span{border-color:var(--silver);color:var(--sole)}
+.pv-bar .tags .ver{background:var(--cu-l);border-color:var(--cu-l);color:var(--tee)}
+.pv-msg{font-size:1.05em;color:var(--silver)}
+.pv-btn{margin-left:auto;background:var(--sneaker);color:var(--tee);font-weight:700;font-size:1.1em;padding:.6em 1.1em;white-space:nowrap}
+.pv-site{font-size:1.45em;display:grid;grid-template-rows:auto minmax(0,1fr)}
+.pv-site .rest-hero{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:center;gap:2em;padding:2.6em 3em}
+.pv-site .rest-name{font-size:3em}
+.pv-site .rest-tag{font-size:1em;margin-top:.6em}
+.pv-dish{aspect-ratio:16/10;background:var(--r2);display:grid;place-items:center;font-style:italic;font-size:2.4em;color:var(--r1)}
+.pv-site .rest-menu{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4em 2.6em;padding:2em 3em;align-content:start}
+.og-in{display:grid;grid-template-columns:minmax(0,1fr) 23em;gap:4em;align-items:center;padding:4.5em 6em}
+.og-copy{display:grid;gap:1.8em;align-content:center}
+.og-copy .logo{font-size:2.6em}
+.og-h{font-family:var(--serif);font-size:6.6em;line-height:1.02;letter-spacing:-.01em}
+.og-meta{font-family:var(--mono);font-stretch:87.5%;font-size:1.6em;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.og-ph{position:relative;height:43em;display:grid;place-items:center}
+.og-ph .phone-in{height:39em;aspect-ratio:9/19;border:1em solid var(--tee);border-radius:4em;overflow:hidden}
+.og-ph .rest{font-size:1.12em}
+
+/* Peça 5: login do Hub */
+.lg-in{display:grid;grid-template-columns:40% 60%}
+.lg-side{background:var(--raw);color:var(--sole);padding:4em;display:grid;grid-template-rows:auto minmax(0,1fr) auto;justify-items:center;align-items:center}
+.lg-side .logo{font-size:2.2em;justify-self:start}
+.lg-side .fl{width:17em;height:auto}
+.lg-cap{justify-self:start;font-family:var(--mono);font-stretch:87.5%;font-size:1em;letter-spacing:.08em;text-transform:uppercase;color:var(--silver)}
+.lg-form{align-self:center;justify-self:center;width:34em;display:grid;gap:1.2em}
+.lg-eyebrow{font-family:var(--mono);font-stretch:87.5%;font-size:.95em;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lg-h{font-family:var(--serif);font-size:3.8em;line-height:1.05}
+.lg-sub{font-size:1.2em;color:var(--muted)}
+.lg-field{display:grid;gap:.5em;font-size:1.1em;font-weight:600}
+.lg-input{display:block;font-weight:400;background:var(--sole);border:.09em solid var(--tee);padding:.75em .9em;color:var(--muted)}
+.lg-input.focus{outline:.18em solid var(--cu);outline-offset:.18em;color:var(--tee)}
+.lg-row{display:flex;justify-content:flex-end}
+.lg-forgot{font-weight:600;text-decoration:underline;text-decoration-color:var(--cu);text-underline-offset:.25em}
+.lg-btn{background:var(--raw);color:var(--sole);font-weight:700;font-size:1.2em;text-align:center;padding:.85em}
+.lg-foot{color:var(--muted);text-align:center}
+
+/* Sistema */
+.colors{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem var(--gap)}
+.colors li{display:grid;grid-template-columns:3.2rem minmax(0,1fr);column-gap:.9rem;align-items:start}
+.colors .sw{grid-row:span 3;width:3.2rem;height:3.2rem;background:var(--c);box-shadow:inset 0 0 0 1px rgba(127,127,127,.35)}
+.colors b{font-weight:700;line-height:1.3}
+.colors code{font-family:var(--mono);font-size:.74rem;color:var(--ink-2)}
+.colors .role{font-size:.88rem;line-height:1.35;color:var(--ink-2)}
+.types{display:grid}
+.type-row{display:grid;grid-template-columns:minmax(0,13rem) minmax(0,1fr);gap:.4rem var(--gap);padding-block:1.1rem;border-top:1px solid var(--rule);align-items:baseline}
+.type-row:last-child{border-bottom:1px solid var(--rule)}
+.type-row .who{display:grid;gap:.15rem}
+.type-row .who b{font-weight:700}
+.type-row .who span{font-size:.85rem;color:var(--ink-2)}
+.sp-serif{font-family:var(--serif);font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.08}
+.sp-sans{font-size:1.1rem;max-width:60ch}
+.sp-mono{font-family:var(--mono);font-stretch:87.5%;font-size:.92rem;letter-spacing:.06em;text-transform:uppercase}
+.sig{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.25rem,3vw,2rem) var(--gap)}
+.sig-card{display:grid;gap:.55rem;align-content:start;min-width:0}
+.sig-vis{position:relative;aspect-ratio:4/3;background:#E2E3E1;color:#141416;border:1px solid var(--rule);overflow:hidden;display:grid;place-items:center}
+.sig-card h4{font-family:var(--serif);font-size:1.35rem;line-height:1.15}
+.sig-card p{font-size:.95rem;color:var(--ink-2)}
+.sig-vis .fl{height:80%;width:auto}
+.sig-vis .duo{position:absolute;inset:0}
+.sig-vis .big-logo{width:34%;height:auto}
+.sig-vis .big-logo .sq{fill:#A96A28}
+.sig-vis.grain img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.04)}
+.sig-vis.grain::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:.45;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+.sig-vis .ab{position:absolute;inset:0;height:100%}
+.sig-vis .ab-in{display:grid;place-items:center}
+.sig-vis .tag-card{font-size:4.4em}
+.logo-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+.logo-tile{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;gap:1.2rem;border:1px solid var(--rule)}
+.logo-tile .lk{display:inline-flex;align-items:center;gap:.55rem;font-weight:800;font-size:1.9rem;letter-spacing:-.02em;line-height:1}
+.logo-tile svg{width:2.3rem;height:2.3rem}
+.logo-tile.t-light{background:#E2E3E1;color:#141416}
+.logo-tile.t-light .sq{fill:#A96A28}
+.logo-tile.t-dark{background:#1F2D52;color:#F4F4F2}
+.logo-tile.t-dark .sq{fill:#C8883B}
+.logo-tile.t-sizes{background:#F4F4F2;color:#141416;align-items:flex-end;padding-bottom:18%}
+.logo-tile.t-sizes .sq{fill:#A96A28}
+.logo-tile.t-sizes svg:nth-child(1){width:16px;height:16px}
+.logo-tile.t-sizes svg:nth-child(2){width:24px;height:24px}
+.logo-tile.t-sizes svg:nth-child(3){width:32px;height:32px}
+.logo-tile.t-sizes svg:nth-child(4){width:48px;height:48px}
+.logo-note{margin-top:.9rem;color:var(--ink-2);max-width:70ch}
+
+/* Listas e textos da base */
+.shots{list-style:none;padding:0;counter-reset:f;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem var(--gap);max-width:960px}
+.shots li{counter-increment:f;display:grid;grid-template-columns:2.2rem minmax(0,1fr);align-items:baseline}
+.shots li::before{content:counter(f);font-family:var(--mono);font-weight:600;color:var(--stitch)}
+.truths{list-style:none;padding:0;display:grid}
+.truth{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr) minmax(0,14rem);gap:.5rem var(--gap);padding-block:1.05rem;border-top:1px solid var(--rule)}
+.truth:last-child{border-bottom:1px solid var(--rule)}
+.truth h3{font-size:1.0625rem;font-weight:800;line-height:1.35}
+.src{font-family:var(--mono);font-stretch:87.5%;font-size:.72rem;letter-spacing:.03em;color:var(--ink-2);display:grid;gap:.4rem;align-content:start}
+.platform{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1.5rem,3vw,2.25rem) var(--gap)}
+.core{grid-column:1/-1;background:var(--surface);border:1px solid var(--rule);padding:clamp(1.25rem,3vw,2rem);display:grid;gap:.6rem}
+.core .big{font-family:var(--serif);font-size:clamp(1.9rem,3.6vw,2.6rem);line-height:1.08}
+.pblock{display:grid;gap:.6rem;align-content:start;min-width:0}
+.pblock h3,.core h3{font-family:var(--mono);font-stretch:87.5%;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.pwide{grid-column:1/-1}
+.pwide>p{max-width:72ch}
+.ladder{list-style:none;padding:0;padding-top:.4rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);counter-reset:nivel}
+.ladder li{counter-increment:nivel;display:grid;gap:.3rem;align-content:start;padding-top:.8rem;border-top:2px solid var(--ink)}
+.ladder li::before{content:"Nível " counter(nivel);font-family:var(--mono);font-stretch:87.5%;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.ladder strong{font-family:var(--serif);font-weight:400;font-size:1.4rem;line-height:1.15}
+.ladder span{color:var(--ink-2)}
+.tablewrap{overflow-x:auto}
+.persona{width:100%;min-width:560px;border-collapse:collapse;font-size:.97rem}
+.persona th,.persona td{text-align:left;vertical-align:top;padding:.7rem 1rem .7rem 0;border-top:1px solid var(--rule)}
+.persona tbody th{font-weight:800;white-space:nowrap}
+.persona thead th{font-family:var(--mono);font-stretch:87.5%;font-size:.72rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);border-top:0;padding-top:0}
+.ba{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+.ba figure{margin:0;display:grid;gap:.4rem;padding-top:.8rem;border-top:2px solid var(--rule);min-width:0}
+.ba figure.after{border-top-color:var(--ink)}
+.ba figcaption{font-family:var(--mono);font-stretch:87.5%;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2)}
+.ba blockquote{margin:0;font-family:var(--serif);font-size:1.35rem;line-height:1.25}
+.ba .before blockquote{color:var(--ink-2)}
+.steps{list-style:none;padding:0;display:grid}
+.step{display:grid;grid-template-columns:minmax(0,7rem) minmax(0,1fr);gap:.4rem var(--gap);padding-block:1.05rem;border-top:1px solid var(--rule)}
+.step:last-child{border-bottom:1px solid var(--rule)}
+.step .g{font-family:var(--mono);font-stretch:87.5%;font-weight:600;display:grid;gap:.35rem;align-content:start}
+.step h3{font-size:1.0625rem;font-weight:800;margin-bottom:.25rem}
+.step p{color:var(--ink-2);max-width:72ch}
+.step.done .g span:first-child{color:var(--ink-2)}
+.qs{list-style:none;padding:0;counter-reset:q;display:grid;gap:.85rem;max-width:76ch}
+.qs li{counter-increment:q;display:grid;grid-template-columns:2.2rem minmax(0,1fr);align-items:baseline}
+.qs li::before{content:counter(q);font-family:var(--mono);font-weight:600;color:var(--stitch)}
+.finds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem var(--gap)}
+.find{display:grid;gap:.4rem;align-content:start;padding-top:.9rem;border-top:2px solid var(--ink);min-width:0}
+.find h3{font-weight:800;font-size:1.0625rem}
+.find p{color:var(--ink-2)}
+.ev{font-family:var(--mono);font-stretch:87.5%;font-size:.7rem;letter-spacing:.03em;color:var(--ink-2)}
+.foot{padding-block:2rem 3rem;color:var(--ink-2);font-size:.85rem}
+.foot p{max-width:90ch}
+
+@media (max-width:860px){
+  .truth{grid-template-columns:minmax(0,1fr)}
+  .sig{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .piece-head{grid-template-columns:minmax(0,1fr)}
+  .piece-head p{grid-column:1}
+  .row-site,.row-ig,.row-prop,.platform,.ba,.ladder,.finds,.shots,.logo-row{grid-template-columns:minmax(0,1fr)}
+  .colors{grid-template-columns:minmax(0,1fr)}
+  .type-row{grid-template-columns:minmax(0,1fr)}
+  .step{grid-template-columns:minmax(0,1fr)}
+  .row-site .phone,.row-ig .fig:last-child{max-width:300px}
+}
+@media (max-width:560px){
+  .sig{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:no-preference){
+  .stitch rect,.stitch line,.stitch path{animation:march 7s linear infinite}
+}
+</style>
+
+<div lang="pt-BR">
+
+<header class="top">
+  <div class="wrap top-in">
+    <div class="brandline">
+      <span class="lockup"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M4 4h20v7H11v14h14v-5h-7v-6h14v18H4z" fill="currentColor"/><path class="sq" d="M25 4h7v7h-7z"/></svg>GaspLab</span>
+      <span class="mono">Brand book v3 · G1 aprovado · 21 out 2026</span>
+    </div>
+    <h1>A direção Uniforme, aplicada.</h1>
+    <p class="lede prose">Você escolheu a direção B, Uniforme, com a etiqueta de amostra da Bancada nas prévias e propostas, e aprovou as cinco peças abaixo em 21/10. Os textos seguem como rascunho, e a logo continua a atual, com o quadrado em cobre, até as suas respostas.</p>
+    <nav class="toc" aria-label="Seções da página">
+      <a href="#pecas">Cinco peças</a>
+      <a href="#sistema">Sistema</a>
+      <a href="#fotos">Fotos que preciso</a>
+      <a href="#etapas">Próximos passos</a>
+      <a href="#perguntas">Perguntas</a>
+      <a href="#plataforma">Plataforma</a>
+      <a href="#verdades">O que é só seu</a>
+      <a href="#diagnostico">Por que mudamos</a>
+    </nav>
+  </div>
+</header>
+
+<section class="sec" id="pecas">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Cinco peças</h2>
+      <p>Todas usam o mesmo sistema: cinza de tênis, preto de camiseta, azul de jeans, a costura em cobre e a etiqueta de amostra. Nomes de clientes e restaurantes são fictícios.</p>
+    </div>
+
+    <article class="piece" id="p-site">
+      <header class="piece-head">
+        <span class="piece-n">Peça 1</span>
+        <h3>Topo do site</h3>
+        <p>Fala com as duas pontas da escada: a prévia para quem chega pelo site e o projeto para a empresa. A etiqueta presa na foto mostra o método, e a costura emoldura o retrato.</p>
+      </header>
+      <div class="row row-site">
+        <figure class="fig">
+          <div class="browser">
+            <div class="browser-bar">gasplab.site</div>
+            <div class="ab" style="aspect-ratio:16/10" role="img" aria-label="Topo do site da GaspLab no desktop, com título, botões e retrato com etiqueta de amostra">
+              <div class="ab-in hero">
+                <div class="hero-nav">
+                  <span class="logo"><svg viewBox="0 0 36 36"><path d="M4 4h20v7H11v14h14v-5h-7v-6h14v18H4z" fill="currentColor"/><path class="sq" d="M25 4h7v7h-7z"/></svg>GaspLab</span>
+                  <span class="menu"><span>Soluções</span><span>Vitrines</span><span>Sobre</span><span>Contato</span></span>
+                  <span class="cta-o">Pedir uma prévia</span>
+                </div>
+                <div class="hero-main">
+                  <div>
+                    <p class="hero-eyebrow">Laboratório de soluções digitais · São Paulo</p>
+                    <p class="hero-h">Você vê funcionando antes de decidir.</p>
+                    <p class="hero-sub">Do primeiro site à inteligência artificial na operação da sua empresa, cada solução passa pela bancada antes de chegar até você.</p>
+                    <div class="hero-ctas"><span class="btn">Quero uma prévia</span><span class="lnk">Tenho um projeto para a empresa</span></div>
+                    <p class="hero-note">Na entrada, a prévia chega antes de qualquer pagamento.</p>
+                  </div>
+                  <div class="hero-photo">
+                    <div class="duo"><img src="retrato.jpg" alt=""><svg class="stitch"><rect x="3.5%" y="2.8%" width="93%" height="94.4%"/></svg></div>
+                    <div class="tag-card">
+                      <div class="tags"><span>Amostra</span><span>Prévia</span><span class="ver">v0.3</span></div>
+                      <ul class="tests"><li class="ok">Abre no celular</li><li class="ok">Pedido chega no WhatsApp</li><li class="ok">Identidade do cliente aplicada</li></ul>
+                      <p class="tag-by">Testado por Vinícius Gasparello</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="hero-levels"><span><b>Entrada</b>site e catálogo</span><span><b>Projeto</b>software e automação</span><span><b>Empresa</b>IA na operação</span></div>
+              </div>
+            </div>
+          </div>
+          <figcaption>Desktop · 1280 × 800</figcaption>
+        </figure>
+        <figure class="fig">
+          <div class="phone">
+            <div class="ab" style="aspect-ratio:390/844" role="img" aria-label="Topo do site da GaspLab no celular">
+              <div class="ab-in mhero">
+                <div class="m-nav"><span class="logo"><svg viewBox="0 0 36 36"><path d="M4 4h20v7H11v14h14v-5h-7v-6h14v18H4z" fill="currentColor"/><path class="sq" d="M25 4h7v7h-7z"/></svg>GaspLab</span><span class="m-menu"><i></i><i></i></span></div>
+                <p class="m-eyebrow">Laboratório de soluções digitais</p>
+                <p class="m-h">Você vê funcionando antes de decidir.</p>
+                <p class="m-sub">Do primeiro site à IA na operação da sua empresa.</p>
+                <span class="m-btn">Quero uma prévia</span>
+                <span class="m-lnk">Tenho um projeto para a empresa</span>
+                <div class="m-photo">
+                  <div class="duo"><img src="retrato.jpg" alt=""></div>
+                  <div class="tag-card"><div class="tags"><span>Prévia</span><span class="ver">v0.3</span></div><p class="tag-by">Testado por Vinícius</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption>Celular · 390 × 844</figcaption>
+        </figure>
+      </div>
+      <button class="replay" type="button" data-replay="p-site">Rever o movimento</button>
+    </article>
+
+    <article class="piece" id="p-ig">
+      <header class="piece-head">
+        <span class="piece-n">Peça 2</span>
+        <h3>Post e story</h3>
+        <p>O post apresenta você no feed. O story mostra o bastidor: uma prévia sendo testada, com a etiqueta marcando cada teste.</p>
+      </header>
+      <div class="row row-ig">
+        <figure class="fig">
+          <div class="ab" style="aspect-ratio:4/5" role="img" aria-label="Post do Instagram com retrato em duotom e o texto Nove anos de código, um laboratório próprio">
+            <div class="ab-in post-in">
+              <div class="post-photo"><div class="duo"><img src="retrato.jpg" alt=""><svg class="stitch"><rect x="3%" y="4%" width="94%" height="92%"/></svg></div></div>
+              <div class="post-text">
+                <p class="post-h">Nove anos de código. Um laboratório próprio.</p>
+                <div class="post-foot"><span class="logo"><svg viewBox="0 0 36 36"><path d="M4 4h20v7H11v14h14v-5h-7v-6h14v18H4z" fill="currentColor"/><path class="sq" d="M25 4h7v7h-7z"/></svg>GaspLab</span><span class="post-handle">@gasplab</span></div>
+              </div>
+            </div>
+          </div>
+          <figcaption>Feed · 1080 × 1350</figcaption>
+        </figure>
+        <figure class="fig">
+          <div class="ab" style="aspect-ratio:9/16" role="img" aria-label="Story do Instagram com celular mostrando a prévia de um restaurante fictício e a etiqueta de testes">
+            <div class="ab-in story-in">
+              <p class="st-top">Bastidor do laboratório</p>
+              <div class="st-stage">
+                <div class="st-phone">
+                  <div class="rest">
+                    <div class="rest-hero"><span class="rest-name">Cantina Exemplo</span><span class="rest-tag">Massas da casa · pedido pelo WhatsApp</span></div>
+                    <ul class="rest-menu"><li><span>Lasanha da nonna</span><b>R$ 49</b></li><li><span>Nhoque ao sugo</span><b>R$ 42</b></li><li><span>Tiramisù</span><b>R$ 24</b></li></ul>
+                    <span class="rest-btn">Pedir no WhatsApp</span>
+                  </div>
+                </div>
+                <div class="tag-card">
+                  <div class="tags"><span>Amostra</span><span class="ver">v0.3</span></div>
+                  <ul class="tests"><li class="ok">Abre no celular</li><li class="ok">Pedido no WhatsApp</li></ul>
+                </div>
+              </div>
+              <p class="st-h">Primeiro a prévia. Depois a decisão.</p>
+              <span class="st-cta">Peça a sua no direct</span>
+            </div>
+          </div>
+          <figcaption>Story · 1080 × 1920</figcaption>
+        </figure>
+      </div>
+      <button class="replay" type="button" data-replay="p-ig">Rever o movimento</button>
+    </article>
+
+    <article class="piece" id="p-prop">
+      <header class="piece-head">
+        <span class="piece-n">Peça 3</span>
+        <h3>Capa de proposta</h3>
+        <p>A costura vira a lateral da página, como a de um jeans. A etiqueta diz o tipo e a versão do documento, e o responsável técnico assina.</p>
+      </header>
+      <div class="row row-prop">
+        <figure class="fig">
+          <div class="ab" style="aspect-ratio:210/297" role="img" aria-label="Capa de proposta da GaspLab para uma empresa fictícia">
+            <div class="ab-in prop-in">
+              <svg class="stitch on-light"><line x1="6.5%" y1="0" x2="6.5%" y2="100%"/></svg>
+              <div class="prop-top">
+                <span class="logo"><svg viewBox="0 0 36 36"><path d="M4 4h20v7H11v14h14v-5h-7v-6h14v18H4z" fill="currentColor"/><path class="sq" d="M25 4h7v7h-7z"/></svg>GaspLab</span>
+                <div class="tags"><span>Proposta</span><span class="ver">v1.0</span></div>
+              </div>
+              <div class="prop-mid">
+                <p class="prop-for"><span>Para</span>Empresa Exemplo Ltda.</p>
+                <p class="prop-h">Atendimento e pedidos no WhatsApp, ligados ao sistema da empresa.</p>
+                <p class="prop-sub">Escopo, etapas e investimento.</p>
+              </div>
+              <div class="prop-bot">
+                <div><span class="lbl">Responsável técnico</span><span>Vinícius Gasparello</span></div>
+                <div><span class="lbl">Data</span><span>Outubro de 2026</span></div>
+                <svg class="fl" viewBox="0 0 160 200" aria-hidden="true"><g class="ink"><path pathLength="1" d="M60 14h40v10H60z"/><path pathLength="1" d="M68 24v50M92 24v50"/><path pathLength="1" d="M68 74 30 166q-4 12 10 14h80q14-2 10-14L92 74"/><path pathLength="1" d="M46 128c14-6 26 6 40 0s20-6 28 0"/><circle pathLength="1" cx="78" cy="114" r="3"/><circle pathLength="1" cx="86" cy="102" r="2"/><circle pathLength="1" cx="81" cy="91" r="1.4"/><path pathLength="1" d="M132 26v20M122 36h20M27 58v14M20 65h14"/></g><g class="dots"></g></svg>
+              </div>
+              <div class="prop-band"><span>gasplab.site</span><span>Laboratório de soluções digitais</span></div>
+            </div>
+          </div>
+          <figcaption>A4 · retrato</figcaption>
+        </figure>
+        <ul class="notes">
+          <li>A costura lateral em cobre é a única da peça.</li>
+          <li>A etiqueta diz o tipo do documento e a versão. Uma revisão vira v1.1, e o cliente sabe qual está lendo.</li>
+          <li>O título descreve o problema com as palavras do próprio cliente, em serifa.</li>
+          <li>Responsável técnico e data no rodapé; a faixa em jeans cru fecha a página com o site.</li>
+          <li>O traço fino assina sem precisar de foto, para propostas enviadas sem o retrato.</li>
+        </ul>
+      </div>
+      <button class="replay" type="button" data-replay="p-prop">Rever o movimento</button>
+    </article>
+
+    <article class="piece" id="p-pv">
+      <header class="piece-head">
+        <span class="piece-n">Peça 4</span>
+        <h3>Moldura da prévia</h3>
+        <p>A faixa no topo de toda prévia diz quem fez, a versão e que nada foi publicado. O cartão aparece quando o link é enviado no WhatsApp. A identidade do restaurante continua sendo dele.</p>
+      </header>
+      <div class="row row-pv">
+        <figure class="fig">
+          <div class="browser">
+            <div class="browser-bar">previa.gasplab.site/cantina-exemplo</div>
+            <div class="ab" style="aspect-ratio:16/9" role="img" aria-label="Prévia do site de um restaurante fictício com a faixa da GaspLab no topo">
+              <div class="ab-in pv-in">
+                <div class="pv-bar">
+                  <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M4 4h20v7H11v14h14v-5h-7v-6h14v18H4z" fill="currentColor"/><path class="sq" d="M25 4h7v7h-7z"/></svg>
+                  <span class="pv-by">Prévia feita pela GaspLab</span>
+                  <span class="tags"><span>Amostra</span><span class="ver">v0.3</span></span>
+                  <span class="pv-msg">Esta versão ainda não está publicada.</span>
+                  <span class="pv-btn">Quero esta versão</span>
+                </div>
+                <div class="rest pv-site">
+                  <div class="rest-hero">
+                    <div><span class="rest-name">Cantina Exemplo</span><p class="rest-tag">Massas da casa, feitas todo dia. Peça pelo WhatsApp e retire no balcão.</p></div>
+                    <div class="pv-dish">massas da casa</div>
+                  </div>
+                  <ul class="rest-menu"><li><span>Lasanha da nonna</span><b>R$ 49</b></li><li><span>Nhoque ao sugo</span><b>R$ 42</b></li><li><span>Talharim na manteiga</span><b>R$ 39</b></li><li><span>Ravioli de abóbora</span><b>R$ 45</b></li><li><span>Salada da casa</span><b>R$ 28</b></li><li><span>Tiramisù</span><b>R$ 24</b></li></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption>Faixa da prévia sobre o site do cliente · 1600 × 900</figcaption>
+        </figure>
+        <figure class="fig">
+          <div class="ab" style="aspect-ratio:1200/630" role="img" aria-label="Cartão de compartilhamento no WhatsApp com o texto Sua prévia está pronta">
+            <div class="ab-in og-in">
+              <div class="og-copy">
+                <span class="logo"><svg viewBox="0 0 36 36"><path d="M4 4h20v7H11v14h14v-5h-7v-6h14v18H4z" fill="currentColor"/><path class="sq" d="M25 4h7v7h-7z"/></svg>GaspLab</span>
+                <p class="og-h">Sua prévia está pronta.</p>
+                <p class="og-meta">Cantina Exemplo · amostra v0.3</p>
+              </div>
+              <div class="og-ph">
+                <div class="phone-in">
+                  <div class="rest">
+                    <div class="rest-hero"><span class="rest-name">Cantina Exemplo</span><span class="rest-tag">Massas da casa</span></div>
+                    <ul class="rest-menu"><li><span>Lasanha da nonna</span><b>R$ 49</b></li><li><span>Nhoque ao sugo</span><b>R$ 42</b></li><li><span>Tiramisù</span><b>R$ 24</b></li></ul>
+                    <span class="rest-btn">Pedir no WhatsApp</span>
+                  </div>
+                </div>
+                <svg class="stitch on-light"><rect x="2%" y="1%" width="96%" height="98%"/></svg>
+              </div>
+            </div>
+          </div>
+          <figcaption>Cartão do link no WhatsApp · 1200 × 630</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <article class="piece" id="p-hub">
+      <header class="piece-head">
+        <span class="piece-n">Peça 5</span>
+        <h3>Login do Hub</h3>
+        <p>A ferramenta interna também veste a marca: painel em jeans cru com o traço fino, formulário em sola clara e foco em cobre.</p>
+      </header>
+      <figure class="fig">
+        <div class="browser">
+          <div class="browser-bar">gasplab-hub · /login</div>
+          <div class="ab" style="aspect-ratio:16/10" role="img" aria-label="Tela de login do GaspLab Hub com painel azul de jeans e formulário">
+            <div class="ab-in lg-in">
+              <div class="lg-side">
+                <span class="logo light"><svg viewBox="0 0 36 36"><path d="M4 4h20v7H11v14h14v-5h-7v-6h14v18H4z" fill="currentColor"/><path class="sq" d="M25 4h7v7h-7z"/></svg>GaspLab</span>
+                <svg class="fl light" viewBox="0 0 160 200" aria-hidden="true"><g class="ink"><path pathLength="1" d="M60 14h40v10H60z"/><path pathLength="1" d="M68 24v50M92 24v50"/><path pathLength="1" d="M68 74 30 166q-4 12 10 14h80q14-2 10-14L92 74"/><path pathLength="1" d="M46 128c14-6 26 6 40 0s20-6 28 0"/><circle pathLength="1" cx="78" cy="114" r="3"/><circle pathLength="1" cx="86" cy="102" r="2"/><circle pathLength="1" cx="81" cy="91" r="1.4"/><path pathLength="1" d="M132 26v20M122 36h20M27 58v14M20 65h14"/></g><g class="dots"></g></svg>
+                <p class="lg-cap">GaspLab Hub · uso interno</p>
+              </div>
+              <div class="lg-form">
+                <p class="lg-eyebrow">Operação comercial</p>
+                <p class="lg-h">Entre na operação.</p>
+                <p class="lg-sub">Use o acesso enviado pelo administrador da GaspLab.</p>
+                <div class="lg-field">E-mail<span class="lg-input">seu e-mail de acesso</span></div>
+                <div class="lg-field">Senha<span class="lg-input focus">••••••••••</span></div>
+                <div class="lg-row"><span class="lg-forgot">Esqueceu a senha?</span></div>
+                <span class="lg-btn">Entrar</span>
+                <p class="lg-foot">Primeiro acesso? O link chega por e-mail.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption>Login · 1440 × 900</figcaption>
+      </figure>
+      <button class="replay" type="button" data-replay="p-hub">Rever o movimento</button>
+    </article>
+  </div>
+</section>
+
+<section class="sec" id="sistema">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Sistema</h2>
+      <p>O que as cinco peças usam. No G2 cada item ganha regras completas e arquivos prontos.</p>
+    </div>
+
+    <h3 class="sub-h">Cores</h3>
+    <ul class="colors">
+      <li><span class="sw" style="--c:#141416"></span><b>Camiseta</b><code>#141416</code><span class="role">Texto, logo e traço fino</span></li>
+      <li><span class="sw" style="--c:#1F2D52"></span><b>Jeans cru</b><code>#1F2D52</code><span class="role">Fundos escuros, duotom e botão principal</span></li>
+      <li><span class="sw" style="--c:#5A76A8"></span><b>Jeans lavado</b><code>#5A76A8</code><span class="role">Apoio, gráficos e estado de sucesso</span></li>
+      <li><span class="sw" style="--c:#E2E3E1"></span><b>Tênis</b><code>#E2E3E1</code><span class="role">Fundo principal</span></li>
+      <li><span class="sw" style="--c:#F4F4F2"></span><b>Sola</b><code>#F4F4F2</code><span class="role">Cartões, formulários, etiquetas e propostas</span></li>
+      <li><span class="sw" style="--c:#A8AEB6"></span><b>Prata</b><code>#A8AEB6</code><span class="role">Linhas e texto de apoio sobre o jeans</span></li>
+      <li><span class="sw" style="--c:#A96A28"></span><b>Costura</b><code>#A96A28</code><span class="role">Costura e rebite sobre fundo claro; nunca em texto</span></li>
+      <li><span class="sw" style="--c:#C8883B"></span><b>Costura clara</b><code>#C8883B</code><span class="role">Costura e rebite sobre o jeans</span></li>
+      <li><span class="sw" style="--c:#B4432F"></span><b>Tijolo</b><code>#B4432F</code><span class="role">Erros e alertas; o sistema não usa verde</span></li>
+    </ul>
+
+    <h3 class="sub-h">Tipografia</h3>
+    <div class="types">
+      <div class="type-row"><div class="who"><b>Hedvig Letters Serif</b><span>Títulos, de 24 px para cima</span></div><p class="sp-serif">Você vê funcionando antes de decidir.</p></div>
+      <div class="type-row"><div class="who"><b>Hanken Grotesk</b><span>Texto, interface e botões</span></div><p class="sp-sans">Do primeiro site à inteligência artificial na operação da sua empresa, cada solução passa pela bancada antes de chegar até você.</p></div>
+      <div class="type-row"><div class="who"><b>Martian Mono</b><span>Etiquetas, versões e dados</span></div><p class="sp-mono">Amostra · Prévia · v0.3 · testado por Vinícius</p></div>
+    </div>
+
+    <h3 class="sub-h">Elementos que assinam</h3>
+    <div class="sig">
+      <div class="sig-card">
+        <div class="sig-vis"><svg class="stitch on-light" aria-hidden="true"><rect x="12%" y="16%" width="76%" height="68%"/><line x1="12%" y1="50%" x2="88%" y2="50%"/></svg></div>
+        <h4>Costura</h4>
+        <p>Linha tracejada em cobre. Uma por peça: na moldura da foto, na borda do cartão ou na lateral da proposta.</p>
+      </div>
+      <div class="sig-card">
+        <div class="sig-vis"><svg class="big-logo" viewBox="0 0 36 36" aria-hidden="true"><path d="M4 4h20v7H11v14h14v-5h-7v-6h14v18H4z" fill="#141416"/><path class="sq" d="M25 4h7v7h-7z"/></svg></div>
+        <h4>Rebite</h4>
+        <p>O quadrado da logo, em cobre. Vira marcador de lista, ponto de status e o canto da etiqueta.</p>
+      </div>
+      <div class="sig-card">
+        <div class="sig-vis"><svg class="fl" viewBox="0 0 160 200" aria-hidden="true"><g class="ink"><path pathLength="1" d="M60 14h40v10H60z"/><path pathLength="1" d="M68 24v50M92 24v50"/><path pathLength="1" d="M68 74 30 166q-4 12 10 14h80q14-2 10-14L92 74"/><path pathLength="1" d="M46 128c14-6 26 6 40 0s20-6 28 0"/><circle pathLength="1" cx="78" cy="114" r="3"/><circle pathLength="1" cx="86" cy="102" r="2"/><circle pathLength="1" cx="81" cy="91" r="1.4"/><path pathLength="1" d="M132 26v20M122 36h20M27 58v14M20 65h14"/></g><g class="dots"></g></svg></div>
+        <h4>Traço fino</h4>
+        <p>Ilustração em linha fina preta, com pontilhado, como a sua tatuagem. Nenhum ícone de banco.</p>
+      </div>
+      <div class="sig-card">
+        <div class="sig-vis"><div class="duo"><img src="retrato.jpg" alt=""></div></div>
+        <h4>Duotom de jeans</h4>
+        <p>Retrato institucional com sombras em jeans cru e luz em branco. Mesmo tratamento em todo retrato oficial.</p>
+      </div>
+      <div class="sig-card">
+        <div class="sig-vis"><div class="ab"><div class="ab-in"><div class="tag-card"><div class="tags"><span>Prévia</span><span class="ver">v0.3</span></div><ul class="tests"><li class="ok">Abre no celular</li><li class="ok">Pedido no WhatsApp</li></ul></div></div></div></div>
+        <h4>Etiqueta de amostra</h4>
+        <p>Toda prévia e proposta leva o tipo, a versão, o que foi testado e quem testou.</p>
+      </div>
+      <div class="sig-card">
+        <div class="sig-vis grain"><img src="retrato.jpg" alt=""></div>
+        <h4>Grão de bastidor</h4>
+        <p>Foto de bastidor em cor natural, com grão leve. Fotos suas e da equipe, nunca de banco de imagem.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-h">Logo</h3>
+    <div class="logo-row">
+      <div class="logo-tile t-light"><span class="lk"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M4 4h20v7H11v14h14v-5h-7v-6h14v18H4z" fill="currentColor"/><path class="sq" d="M25 4h7v7h-7z"/></svg>GaspLab</span></div>
+      <div class="logo-tile t-dark"><span class="lk"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M4 4h20v7H11v14h14v-5h-7v-6h14v18H4z" fill="currentColor"/><path class="sq" d="M25 4h7v7h-7z"/></svg>GaspLab</span></div>
+      <div class="logo-tile t-sizes" aria-label="Símbolo em 16, 24, 32 e 48 pixels"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M4 4h20v7H11v14h14v-5h-7v-6h14v18H4z" fill="currentColor"/><path class="sq" d="M25 4h7v7h-7z"/></svg><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M4 4h20v7H11v14h14v-5h-7v-6h14v18H4z" fill="currentColor"/><path class="sq" d="M25 4h7v7h-7z"/></svg><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M4 4h20v7H11v14h14v-5h-7v-6h14v18H4z" fill="currentColor"/><path class="sq" d="M25 4h7v7h-7z"/></svg><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M4 4h20v7H11v14h14v-5h-7v-6h14v18H4z" fill="currentColor"/><path class="sq" d="M25 4h7v7h-7z"/></svg></div>
+    </div>
+    <p class="logo-note">É a logo atual, com o G em preto e o quadrado em cobre. A costura escureceu um tom sobre o cinza para o quadrado ter contraste de pelo menos 3:1; no v2 ele quase sumia no fundo claro. Refinar ou redesenhar depende da sua resposta 3.</p>
+  </div>
+</section>
+
+<section class="sec" id="fotos">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Fotos que preciso</h2>
+      <p>Hoje as peças usam o único retrato em alta que existe. Para o G2, celular serve, de preferência com luz natural e as roupas de sempre.</p>
+    </div>
+    <ol class="shots">
+      <li>Corpo inteiro, de frente, contra uma parede lisa e clara.</li>
+      <li>Meio corpo, sorrindo, olhando para a câmera.</li>
+      <li>A mão com a tatuagem no teclado do notebook.</li>
+      <li>Detalhe de perfil, com a argola.</li>
+      <li>Os tênis no chão do lugar onde você trabalha.</li>
+      <li>Você na mesa, com uma prévia aberta na tela.</li>
+      <li>A equipe trabalhando, se quiser que ela apareça.</li>
+      <li>Duas ou três fotos do seu dia (academia, rua, noite), só se você quiser que apareçam.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="etapas">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Próximos passos</h2>
+      <p>Cada etapa termina com algo para você ver e aprovar antes da próxima.</p>
+    </div>
+    <ol class="steps">
+      <li class="step done">
+        <div class="g"><span>G0</span><span class="flag">21/10</span></div>
+        <div><h3>Direção escolhida</h3><p>B, Uniforme, como base, com a etiqueta de amostra da Bancada nas prévias e propostas. As direções A e C ficam no histórico de versões desta página.</p></div>
+      </li>
+      <li class="step done">
+        <div class="g"><span>G1</span><span class="flag">21/10</span></div>
+        <div><h3>Cinco peças aprovadas</h3><p>Topo do site, post e story, capa de proposta, moldura da prévia e login do Hub.</p></div>
+      </li>
+      <li class="step">
+        <div class="g"><span>G2</span><span class="flag">Próximo</span></div>
+        <div><h3>Brand book completo</h3><p>Começa quando chegarem as suas respostas e as fotos. Logo final, regras de cada elemento, ilustrações e o avatar do Vini em traço fino, voz com exemplos para cada nível de cliente, templates editáveis e um único arquivo de cores e fontes para o site, o Hub e as prévias.</p></div>
+      </li>
+      <li class="step">
+        <div class="g"><span>G3</span></div>
+        <div><h3>Aplicação</h3><p>Site, Hub, templates de Instagram, propostas e prévias, com checagem de fatos antes de publicar.</p></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="perguntas">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Perguntas abertas</h2>
+      <p>Pode responder pelo número, em texto ou áudio.</p>
+    </div>
+    <ol class="qs">
+      <li>Gasp vem de Gasparello? Você gosta da leitura em inglês, o suspiro de surpresa?</li>
+      <li>A Gasp Development, de 2021, está ativa, e a GaspLab fatura por ela? Os arquivos tratam o CNPJ como pendente.</li>
+      <li>Logo: mantenho o G atual com o quadrado em cobre, refino ou redesenho?</li>
+      <li>Do seu lado pessoal, o que pode aparecer (festival, academia, estilo, tatuagem) e o que fica de fora?</li>
+      <li>Nos projetos para empresas existe algo que faz o papel da prévia antes do contrato, como um protótipo ou um diagnóstico?</li>
+      <li>Você se apresenta como desenvolvedor ou como engenheiro de IA?</li>
+      <li>O azul continua sendo a cor? Na direção escolhida ele é o azul do jeans.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="plataforma">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="flag">Rascunho para validar</span>
+      <h2>Plataforma da marca</h2>
+      <p>Escrita a partir dos fatos abaixo. A história ainda precisa das suas palavras.</p>
+    </div>
+    <div class="platform">
+      <div class="core">
+        <h3>Ideia central</h3>
+        <p class="big">Você vê funcionando antes de decidir.</p>
+        <p>Descritor: laboratório de soluções digitais.</p>
+      </div>
+      <div class="pblock pwide">
+        <h3>Para quem</h3>
+        <p>Empresários de todos os níveis. A marca precisa servir a quem compra o primeiro site e a quem contrata IA para a operação.</p>
+        <ol class="ladder">
+          <li><strong>Entrada</strong><span>Site e Bio + Catálogo, com a prévia pronta antes do pagamento.</span></li>
+          <li><strong>Projeto</strong><span>Software e automação sob medida para a rotina do negócio.</span></li>
+          <li><strong>Empresa</strong><span>IA aplicada à operação, com diagnóstico, arquitetura, implementação e evolução.</span></li>
+        </ol>
+      </div>
+      <div class="pblock">
+        <h3>O nome</h3>
+        <p>Gasp, de Gasparello. Lab, de laboratório: o lugar onde a solução é testada antes de chegar ao cliente.</p>
+        <p>Em inglês, gasp é o suspiro de surpresa. Pode virar o momento em que a prévia abre e funciona. Só entra se você gostar.</p>
+      </div>
+      <div class="pblock">
+        <h3>A história, em três frases</h3>
+        <p>Em 2021, o Vinícius abriu a Gasp Development para desenvolver software. Em 2025, a empresa virou GaspLab, porque o trabalho tinha virado laboratório: montar, testar, mostrar funcionando e só então seguir. Por trás estão nove anos de código e uma equipe pequena que cuida de engenharia, prévias e atendimento.</p>
+      </div>
+      <div class="pblock pwide">
+        <h3>Personalidade</h3>
+        <div class="tablewrap">
+          <table class="persona">
+            <thead><tr><th scope="col">Traço</th><th scope="col">Como aparece</th><th scope="col">O que evitar</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Mão na massa</th><td>Mostra a prévia antes de prometer</td><td>Apresentação cheia de slide e pouca entrega</td></tr>
+              <tr><th scope="row">Curiosa</th><td>Testa, versiona e conta o que aprendeu</td><td>Experimento que nunca vira produto</td></tr>
+              <tr><th scope="row">Calma e direta</th><td>Explica sem jargão, no ritmo do cliente</td><td>Tom frio de manual técnico</td></tr>
+              <tr><th scope="row">Gente de verdade</th><td>Rosto, estilo e rotina de quem faz</td><td>Foto de banco de imagem e “nosso time” sem rosto</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="pblock pwide">
+        <h3>Voz</h3>
+        <p>Calma, técnica sem jargão, confiante sem exagero, atenta e leve. Esses cinco traços já guiam o avatar e passam a valer para tudo.</p>
+        <p>Quem fala: no site e nas propostas, a GaspLab fala como “a gente”. Nos seus perfis, você fala em primeira pessoa.</p>
+      </div>
+      <div class="pblock pwide">
+        <h3>A mesma ideia, antes e depois</h3>
+        <div class="ba">
+          <figure class="before"><figcaption>v2</figcaption><blockquote>Engenharia para a IA funcionar no seu negócio.</blockquote></figure>
+          <figure class="after"><figcaption>v3, exemplo de entrada</figcaption><blockquote>A gente monta a prévia do seu cardápio. Você testa no celular e decide.</blockquote></figure>
+          <figure class="after"><figcaption>v3, exemplo de empresa</figcaption><blockquote>Antes de automatizar, a gente entende como a sua operação funciona e mostra, na prática, onde a IA ajuda.</blockquote></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="verdades">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>O que só a GaspLab tem</h2>
+      <p>A base de tudo acima. Cada item traz a fonte, e o que precisa da sua confirmação está marcado.</p>
+    </div>
+    <ul class="truths">
+      <li class="truth"><h3>O nome tem história</h3><p>A Gasp Development abriu o CNPJ em 2021. Em 2025 virou GaspLab, um laboratório de soluções digitais.</p><div class="src"><span>Você, 21/10</span><span class="flag">Confirmar: outros arquivos tratam o CNPJ como pendente</span></div></li>
+      <li class="truth"><h3>Todos os níveis de empresário</h3><p>Site e Bio + Catálogo são a porta de entrada. Dali a GaspLab segue com software, automação e IA para empresas de qualquer porte.</p><div class="src"><span>Você, 21/10</span></div></li>
+      <li class="truth"><h3>A prévia vem antes do pagamento</h3><p>Na porta de entrada, a GaspLab monta a prévia funcionando e só depois o cliente decide. É o laboratório na prática.</p><div class="src"><span>Briefing comercial, 01/10</span></div></li>
+      <li class="truth"><h3>Nove anos de código</h3><p>Desde 2017: analista de sistemas, full stack, tech lead e engenheiro de IA, liderando times em operações grandes.</p><div class="src"><span>LinkedIn e Instagram</span></div></li>
+      <li class="truth"><h3>Um uniforme</h3><p>Camiseta preta, jeans escuro largo, tênis cinza e branco, argolas prateadas, tatuagem preto e cinza no braço direito e um sorriso largo.</p><div class="src"><span>Fotos analisadas na pesquisa do avatar</span></div></li>
+      <li class="truth"><h3>Uma vida fora da tela</h3><p>Academia, noite de festival com estruturas de luz, streetwear e momentos em casa.</p><div class="src"><span>Seu Instagram, posts públicos</span></div></li>
+      <li class="truth"><h3>Uma cor</h3><p>Azul é a sua favorita. Verde foi recusado.</p><div class="src"><span>Registro de 25/09</span><span class="flag">Confirmar</span></div></li>
+      <li class="truth"><h3>Uma postura</h3><p>Nada de número sem fonte, depoimento inventado ou promessa de resultado. É raro num mercado que vive de promessa.</p><div class="src"><span>Regras do v2 e do Vault</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="diagnostico">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Por que mudamos</h2>
+      <p>O diagnóstico do brand book v2 que levou à direção atual.</p>
+    </div>
+    <div class="finds">
+      <article class="find"><h3>Nasceu do código do site</h3><p>A página de cores dizia que a fonte da verdade era o CSS. O azul entrou no código às 02:08 de 25/09 e o brand book saiu às 02:30, sem pesquisa, público nem história.</p><p class="ev">PDF p.8 · histórico do git</p></article>
+      <article class="find"><h3>Um azul em 17 tons</h3><p>17 das 19 cores ficavam na mesma faixa de azul. Fundo quase preto, azul elétrico, ciano, brilho e grade é a combinação da maioria dos sites de IA.</p><p class="ev">PDF p.8–9 · app/globals.css</p></article>
+      <article class="find"><h3>Fontes do kit padrão</h3><p>Space Grotesk com IBM Plex Mono é o par mais comum em produto de IA. O logotipo era o nome digitado nessa fonte.</p><p class="ev">PDF p.10–11 · app/layout.tsx</p></article>
+      <article class="find"><h3>Só falava com o topo da escada</h3><p>O v2 só tratava da sprint de arquitetura de IA. A porta de entrada, com a prévia antes do pagamento, não aparecia, e quem chega por ela não se reconhecia na marca.</p><p class="ev">PDF p.5 · briefing de 01/10 · você, 21/10</p></article>
+      <article class="find"><h3>Frases que qualquer concorrente assina</h3><p>“Engenharia para a IA funcionar no seu negócio” e o método em cinco verbos servem para qualquer consultoria.</p><p class="ev">PDF p.2–4 · lib/content.ts</p></article>
+      <article class="find"><h3>Sem você e sem a história</h3><p>A página de fotografia estava vazia. Não havia retrato, primeira pessoa, origem do nome nem data de fundação.</p><p class="ev">PDF p.14–15</p></article>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>Fontes: brand book v2 (PDF e DOCX), app/globals.css, app/layout.tsx, lib/content.ts, knowledge/00-gasplab/negocio-atual.md, docs/CONTEXT_VAULT.md, a pesquisa do avatar em brand/avatar, as suas mensagens de 21/10 e o Instagram público @vini_gasparello. Nomes de clientes, restaurantes e preços nas peças são fictícios. Nada no site, na logo ou no brand book v2 foi alterado.</p>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ns = 'http://www.w3.org/2000/svg';
+
+  /* Pontilhado de tatuagem dentro de cada frasco */
+  Array.prototype.forEach.call(document.querySelectorAll('svg.fl'), function (svg, n) {
+    var g = svg.querySelector('.dots');
+    var seed = 7 + n * 13;
+    function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+    for (var k = 0; k < 1400 && g.childNodes.length < 150; k++) {
+      var y = 131 + rnd() * 45, x = 30 + rnd() * 100;
+      var xl = 68 - (y - 74) * 0.413, xr = 92 + (y - 74) * 0.413;
+      if (x < xl + 2.5 || x > xr - 2.5) continue;
+      if (rnd() > Math.pow((y - 128) / 50, 0.8)) continue;
+      var c = document.createElementNS(ns, 'circle');
+      c.setAttribute('cx', x.toFixed(1));
+      c.setAttribute('cy', y.toFixed(1));
+      c.setAttribute('r', (0.45 + rnd() * 0.6).toFixed(2));
+      g.appendChild(c);
+    }
+    Array.prototype.forEach.call(svg.querySelectorAll('.ink > *'), function (el, i) {
+      el.style.animationDelay = (i * 0.12) + 's';
+    });
+  });
+
+  /* Etiqueta: a versão sobe e os testes passam */
+  function tick(card) {
+    var ver = card.querySelector('.ver');
+    var tests = Array.prototype.slice.call(card.querySelectorAll('.tests li'));
+    if (!ver) return;
+    clearTimeout(card._t);
+    var steps = ['v0.1', 'v0.2', 'v0.3'];
+    var finalVer = ver.getAttribute('data-final') || ver.textContent;
+    ver.setAttribute('data-final', finalVer);
+    if (finalVer.indexOf('v0.') !== 0) return;
+    tests.forEach(function (li) { li.classList.remove('ok'); });
+    ver.textContent = steps[0];
+    var i = 0;
+    function step() {
+      if (i < tests.length) tests[i].classList.add('ok');
+      i += 1;
+      ver.textContent = steps[Math.min(i, steps.length - 1)];
+      if (i < Math.max(tests.length, steps.length - 1)) card._t = setTimeout(step, 650);
+      else { ver.textContent = finalVer; tests.forEach(function (li) { li.classList.add('ok'); }); }
+    }
+    card._t = setTimeout(step, 550);
+  }
+  function draw(scope) {
+    Array.prototype.forEach.call(scope.querySelectorAll('svg.fl'), function (f) {
+      f.classList.remove('draw');
+      void f.getBoundingClientRect();
+      f.classList.add('draw');
+    });
+  }
+  function play(scope) {
+    if (reduce || !scope) return;
+    Array.prototype.forEach.call(scope.querySelectorAll('.tag-card'), tick);
+    draw(scope);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-replay]'), function (btn) {
+    btn.addEventListener('click', function () { play(document.getElementById(btn.getAttribute('data-replay'))); });
+  });
+
+  /* Cada peça e o sistema rodam uma vez quando aparecem */
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { play(e.target); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.3 });
+    Array.prototype.forEach.call(document.querySelectorAll('.piece, .sig'), function (el) { io.observe(el); });
+  }
+})();
+</script>

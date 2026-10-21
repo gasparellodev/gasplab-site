@@ -1,6 +1,7 @@
 # GaspLab — negócio atual (briefing do Felipe, 01/10/2026)
 
 ## O que vende hoje
+- **Atualização do Vinícius (21/10/2026):** a GaspLab continua atendendo empresas. Sites e catálogos (Bio + Catálogo) são **produtos de entrada**; a GaspLab atende empresários de **todos os níveis**.
 - **Sites feitos com IA** para negócios locais (pequenos e médios empresários) e **implementações de IA**.
 - Site institucional da GaspLab: https://gasplab.site (posicionamento: engenharia de software e IA aplicada).
 
