@@ -3,6 +3,9 @@
 Site institucional da GaspLab (https://gasplab.site). Next.js 16 (App Router) + React 19 +
 TypeScript + Tailwind 4, com formulário de diagnóstico gravando em Postgres (Neon) via Drizzle.
 
+> **Montando o ambiente em outra máquina?** Siga o [SETUP-NOVA-MAQUINA.md](SETUP-NOVA-MAQUINA.md)
+> (estrutura dos três repositórios, variáveis de ambiente, base de conhecimento e agentes).
+
 ## Stack
 
 - **Framework:** Next.js 16 (App Router), React 19, TypeScript
