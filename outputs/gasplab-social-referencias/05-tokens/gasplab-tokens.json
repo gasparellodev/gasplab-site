@@ -1,0 +1,206 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "Design tokens GaspLab — gerados automaticamente a partir de :root em app/globals.css. Não editar à mão; rode brand/scripts/export-tokens.mjs.",
+  "$extensions": {
+    "com.gasplab.generatedAt": "2026-09-25T05:17:38.903Z",
+    "com.gasplab.source": "app/globals.css :root",
+    "com.gasplab.contrastNotes": "* GaspLab — Blueprint Intelligence\n * Única fonte de cor do site. Componentes usam as classes geradas pelo @theme\n * (ex.: bg-action, text-signal, text-subtle); nunca hex direto nas classes.\n * Contrastes WCAG verificados: action/branco 5.05, subtle/background 5.72,\n * muted-foreground/card 8.69, paper-muted/paper 7.14."
+  },
+  "color": {
+    "surface": {
+      "background": {
+        "$value": "#070a12",
+        "$type": "color",
+        "$description": "Fundo base do site (mais escuro)."
+      },
+      "sunken": {
+        "$value": "#090d19",
+        "$type": "color",
+        "$description": "Fundo afundado (headers/sidebars)."
+      },
+      "deep": {
+        "$value": "#0b1530",
+        "$type": "color",
+        "$description": "Fundo profundo, seções de contraste."
+      },
+      "card": {
+        "$value": "#0e1424",
+        "$type": "color",
+        "$description": "Fundo de cards e painéis."
+      },
+      "raised": {
+        "$value": "#111a31",
+        "$type": "color",
+        "$description": "Fundo elevado (hover/destacado)."
+      }
+    },
+    "blue": {
+      "primary": {
+        "$value": "#4d7cff",
+        "$type": "color",
+        "$description": "Gasp Blue — linhas, ícones, bordas, destaques."
+      },
+      "action": {
+        "$value": "#2e63f0",
+        "$type": "color",
+        "$description": "Fundo de botão primário (texto branco)."
+      },
+      "action-hover": {
+        "$value": "#2456d8",
+        "$type": "color",
+        "$description": "Hover do botão primário."
+      },
+      "action-foreground": {
+        "$value": "#ffffff",
+        "$type": "color",
+        "$description": "Cor de texto sobre --action."
+      },
+      "signal": {
+        "$value": "#6cc0ff",
+        "$type": "color",
+        "$description": "Signal Azure — Flowline, estados ativos, eyebrow."
+      },
+      "glow": {
+        "$value": "#2456ff",
+        "$type": "color",
+        "$description": "Cor base de glows/gradientes radiais."
+      }
+    },
+    "text": {
+      "foreground": {
+        "$value": "#ecf2ff",
+        "$type": "color",
+        "$description": "Texto principal sobre fundo escuro."
+      },
+      "soft": {
+        "$value": "#dce8ff",
+        "$type": "color",
+        "$description": "Texto secundário, levemente suavizado."
+      },
+      "muted-foreground": {
+        "$value": "#a8b3c7",
+        "$type": "color",
+        "$description": "Texto mudo (parágrafos, legendas). Contraste 8.69:1 sobre --card."
+      },
+      "subtle": {
+        "$value": "#7f8aa3",
+        "$type": "color",
+        "$description": "Texto sutil (rótulos, metadados). Contraste 5.72:1 sobre --background."
+      }
+    },
+    "paper": {
+      "paper": {
+        "$value": "#eaf3ff",
+        "$type": "color",
+        "$description": "Fundo da seção clara (Ice)."
+      },
+      "paper-muted": {
+        "$value": "#43516b",
+        "$type": "color",
+        "$description": "Texto mudo sobre --paper. Contraste 7.14:1."
+      },
+      "paper-accent": {
+        "$value": "#1f58df",
+        "$type": "color",
+        "$description": "Azul de destaque sobre --paper."
+      }
+    },
+    "state": {
+      "danger": {
+        "$value": "#ff665c",
+        "$type": "color",
+        "$description": "Estado de erro/perigo."
+      },
+      "warning": {
+        "$value": "#eacb5a",
+        "$type": "color",
+        "$description": "Estado de atenção."
+      }
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "sans": {
+        "$value": "Space Grotesk",
+        "$type": "fontFamily",
+        "$description": "var(--font-space) — texto geral, títulos (.display/.title), corpo.",
+        "$extensions": {
+          "fallback": "Arial, sans-serif"
+        }
+      },
+      "mono": {
+        "$value": "IBM Plex Mono",
+        "$type": "fontFamily",
+        "$description": "var(--font-plex) — rótulos técnicos (.eyebrow), dados.",
+        "$extensions": {
+          "fallback": "ui-monospace, monospace"
+        }
+      }
+    },
+    "fontWeight": {
+      "regular": {
+        "$value": 400,
+        "$type": "fontWeight"
+      },
+      "medium": {
+        "$value": 500,
+        "$type": "fontWeight",
+        "$description": "Usado em .btn-secondary."
+      },
+      "semibold": {
+        "$value": 600,
+        "$type": "fontWeight",
+        "$description": "Usado em .display, .title, .btn-primary."
+      }
+    },
+    "letterSpacing": {
+      "display": {
+        "$value": "-0.065em",
+        "$type": "dimension",
+        "$description": ".display"
+      },
+      "title": {
+        "$value": "-0.045em",
+        "$type": "dimension",
+        "$description": ".title"
+      },
+      "wordmark": {
+        "$value": "-0.04em",
+        "$type": "dimension",
+        "$description": "Wordmark do logo (tracking-[-.04em])."
+      },
+      "eyebrow": {
+        "$value": "0.14em",
+        "$type": "dimension",
+        "$description": ".eyebrow (uppercase)."
+      }
+    }
+  },
+  "radius": {
+    "sm": {
+      "$value": "6px",
+      "$type": "dimension",
+      "$description": "calc(var(--radius) - 4px)"
+    },
+    "md": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "calc(var(--radius) - 2px)"
+    },
+    "lg": {
+      "$value": "10px",
+      "$type": "dimension",
+      "$description": "var(--radius) — valor base"
+    },
+    "xl": {
+      "$value": "14px",
+      "$type": "dimension",
+      "$description": "calc(var(--radius) + 4px)"
+    },
+    "base": {
+      "$value": "0.625rem",
+      "$type": "dimension",
+      "$description": "--radius em rem, como definido em :root"
+    }
+  }
+}

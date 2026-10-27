@@ -19,6 +19,10 @@ const eslintConfig = defineConfig([
     "squads/**",
     "knowledge/**",
     "brand/**",
+    // Prévias estáticas de Bio + Catálogo (projeto Vercel separado).
+    "previews/**",
+    // Hub (CRM): repositório próprio clonado em hub/.
+    "hub/**",
   ]),
   {
     files: ["components/ui/**/*.{ts,tsx}", "hooks/use-mobile.ts"],

@@ -44,3 +44,6 @@ next-env.d.ts
 # Framework AIOX: dependências locais
 .aiox-core/node_modules/
 .aiox/
+
+# Prévias Bio + Catálogo: repositório próprio (icecompany-19/gasplab-previews)
+/previews/

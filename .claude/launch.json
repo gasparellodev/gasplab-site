@@ -1,0 +1,44 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "site",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "port": 3000
+    },
+    {
+      "name": "previews",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "previews/serve.cjs"
+      ],
+      "port": 4173
+    },
+    {
+      "name": "orochi",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/Felipe Pessoa/Projetos/pods-orochi/scripts/serve.mjs",
+        "--port",
+        "4191",
+        "--sem-banco"
+      ],
+      "port": 4191
+    },
+    {
+      "name": "smoke",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/Felipe Pessoa/Projetos/smoke/scripts/serve.mjs",
+        "--port",
+        "4192",
+        "--sem-banco"
+      ],
+      "port": 4192
+    }
+  ]
+}
