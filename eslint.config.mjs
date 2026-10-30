@@ -23,6 +23,9 @@ const eslintConfig = defineConfig([
     "previews/**",
     // Hub (CRM): repositório próprio clonado em hub/.
     "hub/**",
+    // Projetos com repositório próprio (ex.: projects/loja-geral) e laboratórios locais.
+    "projects/**",
+    "tools/**",
   ]),
   {
     files: ["components/ui/**/*.{ts,tsx}", "hooks/use-mobile.ts"],

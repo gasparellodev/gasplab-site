@@ -47,3 +47,5 @@ next-env.d.ts
 
 # Prévias Bio + Catálogo: repositório próprio (icecompany-19/gasplab-previews)
 /previews/
+/tools/shopee-lab/.runtime/
+/projects/loja-geral/
