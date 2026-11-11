@@ -21,12 +21,26 @@ function Clonar($url, $destino, $branch) {
   if ($LASTEXITCODE -ne 0) { $script:Falhas += $url }
 }
 
+# Repositorios da icecompany-19 (de onde a Vercel publica) tem copia no gasparellodev.
+# Clona do original; sem acesso a ele, clona da copia. Com os dois, liga a copia como
+# remoto "gasparello" (para atualizar a copia: git push gasparello --all).
+function ClonarIC($nome, $destino, $branch) {
+  if (Test-Path (Join-Path $destino '.git')) { Write-Host "ok (ja existe)  $destino"; return }
+  Write-Host "clonando        $destino"
+  $a = @(); if ($branch) { $a = @('--branch', $branch) }
+  & git clone @a "$IC/$nome.git" $destino
+  if ($LASTEXITCODE -eq 0) { & git -C $destino remote add gasparello "$GD/$nome.git"; return }
+  Write-Host "sem acesso ao original; usando a copia do gasparellodev"
+  & git clone @a "$GD/$nome.git" $destino
+  if ($LASTEXITCODE -ne 0) { $script:Falhas += $nome }
+}
+
 $GD = 'https://gasparellodev@github.com/gasparellodev'
 $IC = 'https://icecompany-19@github.com/icecompany-19'
 
 # 1. Dentro da pasta GaspLab (ignorados pelo git do site)
-Clonar "$IC/gasplab-hub.git"      (Join-Path $Raiz 'hub')                  'feat/conteudo-organico'
-Clonar "$IC/gasplab-previews.git" (Join-Path $Raiz 'previews')             $null
+ClonarIC 'gasplab-hub'      (Join-Path $Raiz 'hub')                  'feat/conteudo-organico'
+ClonarIC 'gasplab-previews' (Join-Path $Raiz 'previews')             $null
 Clonar "$GD/loja-geral.git"       (Join-Path $Raiz 'projects\loja-geral')  'docs/bootstrap'
 
 # 2. Frentes do hub em pastas irmas (git worktree), como na maquina original
@@ -55,9 +69,9 @@ Clonar "$GD/divino-capelli.git"        (Join-Path $Projetos 'divino-capelli')   
 Clonar "$GD/istambul-halal.git"        (Join-Path $Projetos 'istambul-halal')      $null
 Clonar "$GD/restaurante-genesis.git"   (Join-Path $Projetos 'restaurante-genesis') $null
 Clonar "$GD/previews-restaurantes.git" (Join-Path $Projetos 'previews')            $null
-Clonar "$IC/mineiro-lanches.git"       (Join-Path $Projetos 'mineiro-lanches')     'claude/modest-galileo-t43m7f'
-Clonar "$IC/zoovita.git"               (Join-Path $Projetos 'zoovita')             $null
-Clonar "$IC/sr-parme.git"              (Join-Path $Projetos 'sr-parme')            $null
+ClonarIC 'mineiro-lanches'       (Join-Path $Projetos 'mineiro-lanches')     'claude/modest-galileo-t43m7f'
+ClonarIC 'zoovita'               (Join-Path $Projetos 'zoovita')             $null
+ClonarIC 'sr-parme'              (Join-Path $Projetos 'sr-parme')            $null
 
 Write-Host ''
 if ($Falhas.Count) {

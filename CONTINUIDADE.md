@@ -28,7 +28,7 @@ O script clona todos os repositórios na estrutura certa, recria as frentes do h
 
 Depois dele faltam três coisas manuais: recriar os `.env` (seção 5), rodar `npm install` nos projetos que for usar (seção 6) e reconectar os conectores do Claude (seção 7).
 
-**Contas necessárias.** O git precisa de acesso de escrita a duas contas do GitHub: `gasparellodev` e `icecompany-19`. No primeiro `git clone` de cada conta o Windows abre a janela de login; entre com a conta pedida no endereço. Sem a `icecompany-19`, o hub, as prévias, o Mineiro, a ZooVita e o Sr. Parmê não baixam.
+**Contas necessárias.** O git precisa de acesso de escrita a duas contas do GitHub: `gasparellodev` e `icecompany-19`. No primeiro `git clone` de cada conta o Windows abre a janela de login; entre com a conta pedida no endereço. Sem a `icecompany-19`, o script baixa o hub, as prévias, o Mineiro, a ZooVita e o Sr. Parmê das cópias que existem no `gasparellodev` (ver "Cópias no gasparellodev", na seção 2).
 
 ---
 
@@ -63,6 +63,14 @@ Depois dele faltam três coisas manuais: recriar os `.env` (seção 5), rodar `n
 | `mineiro-lanches/` | `icecompany-19/mineiro-lanches` | público | `claude/modest-galileo-t43m7f` | Cardápio e painel do Mineiro Lanche. A produção sai dessa branch |
 | `zoovita/` | `icecompany-19/zoovita` | privado | `main` | Painel da ZooVita (Supabase, login) |
 | `sr-parme/` | `icecompany-19/sr-parme` | privado | `main` | Cardápio do Sr. Parmê |
+
+### Cópias no gasparellodev
+
+Os cinco repositórios da `icecompany-19` têm cópia privada, com o mesmo nome, no `gasparellodev`: `gasplab-hub`, `gasplab-previews`, `mineiro-lanches`, `zoovita` e `sr-parme`. A cópia é de 11/11/2026 e serve de garantia e de acesso por uma conta só.
+
+- **A Vercel publica do original**, na `icecompany-19`. Push só na cópia não publica nada.
+- Cada pasta local tem dois remotos: `origin` (original) e `gasparello` (cópia). O `git push` normal vai para o original.
+- A cópia não se atualiza sozinha. Para atualizar: `git push gasparello --all` dentro da pasta do projeto.
 
 ### Clientes que não têm repositório próprio
 
