@@ -49,3 +49,22 @@ next-env.d.ts
 /previews/
 /tools/shopee-lab/.runtime/
 /projects/loja-geral/
+
+# Base privada (gasparellodev/gasplab-privado): usa esta mesma pasta como área de trabalho.
+# Ver scripts/privado.ps1 e CONTINUIDADE.md. Nada destes caminhos entra no repositório público.
+/.privado.git/
+/_maquina/
+/clientes/
+/knowledge/50-aquisicao/
+/knowledge/60-gasp-global/
+/knowledge/65-main-thread/
+/output/
+/outputs/Guia_Gabriel_Hub/
+/outputs/prospeccao-sp/
+/outputs/teste-barbearia/
+/.claude/agent-memory/
+
+# Hub (icecompany-19/gasplab-hub) e as frentes dele em pastas irmãs (git worktree)
+/hub/
+/hub-*/
+/release-hub-*/

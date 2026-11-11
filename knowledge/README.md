@@ -15,4 +15,11 @@ Somente GaspLab. Nada de Ice Company ou outros negócios (exceção: a Ice Compa
 | `80-metricas/` | Funil, KPIs, painel diário, unit economics | data-squad |
 | `99-pendencias.md` | Dados que faltam e de quem dependem | todos |
 
+## Main Thread (marca de roupa do Vinícius, separada da operação da GaspLab)
+
+| Pasta | Conteúdo | Dono (agente) |
+|---|---|---|
+| `65-main-thread/` | **Comece aqui.** Identidade, tokens, redes, plano até a Black Friday, fotos e IA, kit das redes, brand book | brand-chief |
+| `60-gasp-global/` | Pesquisa, sistema, copy, oferta, lista de peças, arquivos de design, tema Shopify, página do plano | brand-chief |
+
 Regras: toda afirmação de mercado traz fonte (URL + data de acesso). Estimativa é marcada como **estimativa**. Dado interno não confirmado é marcado como **a confirmar**.

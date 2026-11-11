@@ -39,6 +39,161 @@
         "--sem-banco"
       ],
       "port": 4192
+    },
+    {
+      "name": "hub",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "hub",
+        "run",
+        "dev"
+      ],
+      "port": 3000
+    },
+    {
+      "name": "sr-parme",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/Léo R/projects/sr-parme/scripts/serve.mjs",
+        "--porta",
+        "4184",
+        "--local"
+      ],
+      "port": 4184
+    },
+    {
+      "name": "burger-bulls",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/Léo R/projects/burger-bulls/scripts/dev.mjs"
+      ],
+      "port": 4321
+    },
+    {
+      "name": "hub-gaspar",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "hub-gaspar",
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "3001"
+      ],
+      "port": 3001
+    },
+    {
+      "name": "hub-mares",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "hub-mares",
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "3002"
+      ],
+      "port": 3002
+    },
+    {
+      "name": "hub-emergencia",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "hub-emergencia",
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "3003"
+      ],
+      "port": 3003
+    },
+    {
+      "name": "mineiro-lanches",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/Léo R/projects/mineiro-lanches/node_modules/vite/bin/vite.js",
+        "preview",
+        "C:/Users/Léo R/projects/mineiro-lanches",
+        "--mode",
+        "development",
+        "--port",
+        "4185",
+        "--strictPort"
+      ],
+      "port": 4185
+    },
+    {
+      "name": "zoom-lupas",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4186",
+        "--directory",
+        "C:/Users/Léo R/projects/GaspLab/output/zoom-lupas-preview"
+      ],
+      "port": 4186
+    },
+    {
+      "name": "mares-pagina",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4187",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "C:/Users/LOR~1/AppData/Local/Temp/claude/C--Users-L-o-R-projects-GaspLab/abb37f84-d398-4cff-bd5e-0d73f7ffe32c/scratchpad/gravacao-mares"
+      ],
+      "port": 4187
+    },
+    {
+      "name": "tonab",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "C:/Users/Léo R/projects/tonab-lounge",
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "3010"
+      ],
+      "port": 3010
+    },
+    {
+      "name": "tonab-prod",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "C:/Users/Léo R/projects/tonab-lounge",
+        "run",
+        "start",
+        "--",
+        "--port",
+        "3011"
+      ],
+      "port": 3011
+    },
+    {
+      "name": "mares-marca",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4188",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "C:/Users/LOR~1/AppData/Local/Temp/claude/C--Users-L-o-R-projects-GaspLab/abb37f84-d398-4cff-bd5e-0d73f7ffe32c/scratchpad/mares-marca"
+      ],
+      "port": 4188
     }
   ]
 }

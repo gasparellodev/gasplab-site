@@ -7,6 +7,7 @@ Este repositório é **exclusivamente da GaspLab** (site gasplab.site + operaç�
 - **Exceção (decidida pelo Felipe em 14/10/2026):** a Ice Company pode ser citada **apenas como cliente da GaspLab** (nome em lista de clientes/cases). Nada de dados operacionais dela (loja, produtos, fotos, campanhas, Bling/Shopify/Yampi), que vivem em `Projetos\Teste Ice`.
 - Fonte de conhecimento da GaspLab: `knowledge/` (negócio, produto, mercado, oferta, aquisição, scripts, técnico, métricas, riscos) e `docs/` (marca e site).
 - Se faltar um dado, registre como pendência em `knowledge/99-pendencias.md` — nunca invente números, clientes, depoimentos ou resultados.
+- **Main Thread** é a marca de roupa do Vinícius, separada da operação da GaspLab. A fonte de verdade é `knowledge/65-main-thread/README.md`; a pesquisa e os arquivos de design ficam em `knowledge/60-gasp-global/`.
 
 ## Agentes
 - Squads XSquads (13 squads, 178 personas) em `squads/`. Entrada: `squads/xquads/` (Xquads Chief) ou o chefe de cada squad em `.claude/agents/*-chief.md`.

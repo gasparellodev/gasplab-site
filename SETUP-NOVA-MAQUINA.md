@@ -1,5 +1,7 @@
 # GaspLab — como montar o ambiente em outra máquina
 
+> Mapa completo de todos os projetos, da base privada e do agente do Telegram: [CONTINUIDADE.md](CONTINUIDADE.md).
+
 Guia para deixar a base de conhecimento, os agentes e os três repositórios da GaspLab funcionando em um computador novo, do mesmo jeito que na máquina original.
 
 > **Este repositório é público.** Não coloque senhas, chaves, e-mails de clientes nem dados de leads em nenhum arquivo versionado. Segredos ficam só no `.env.local` (ignorado pelo git) e no painel da Vercel.
